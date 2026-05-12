@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       7bff375b-0e2f-432a-8bdc-17ef4a054e58
+:END:
+#+title: Linearity
+
+A property of mathematical systems or relationships where the output is directly proportional to the input.
+
+This forms a straight line when graphed.
+
+* In Ordinary Differential Equations
+
+Differential equations are linear if the dependent variable (usually /y/) and its derivatives (/y'/, /y''/, /y'''/, and so on):
+
+1. Appear only in the first power (to the power of 1),
+
+2. Are not multiplied together,
+
+3. And have coefficients that depend only on the independent variable (/x/).
+
+The differential equation may feature non-linear functions but only if they are applied soley on the independent variable.
+
+** Superposition
+
+If an equation is linear, then the superposition principle can be applied to it.
+
+This means that if y_{1} and y_{2} solutions to a linear homogeneous equation, then c_{1}y_{1} + c_{2}y_{2} is also a solution.
+
+Practically, this means that the you solve each side of a linear ODE separately.

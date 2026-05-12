@@ -10,11 +10,11 @@ A digital signal is easier to analyze than an analog signal since an analog wave
 
 $$y(t) = A \sin (\omega t + \phi)$$ 
 
-While a digital wave is a square wave, having only two possible values: ON or OFF.
+While a digital wave is a square wave, having only two possible values: *ON* or *OFF*.
 
-The 'ON' value is called the 'HIGH State' or the 'TRUE State' or the '1 State'.
+The 'ON' value is called the '*HIGH* State ' or the '*TRUE* State' or the '*1* State'.
 
-The 'OFF' value is also called the 'LOW State' or the 'FALSE State' or the '0 State'.
+The 'OFF' value is also called the '*LOW* State' or the '*FALSE* State' or the '*0* State'.
 
 'ON' could mean 5V, 2V, or anything really. 'OFF' means 0V.
 
@@ -28,13 +28,11 @@ Like this:
 
 $$123_{10} = 123$$
 
-#+BEGIN_CENTER
 or
-#+END_CENTER
 
 $$342.21_{5 }= 97.44_{10} = 97.44$$
 
-To convert from base r to base 10, multiply each digit by the corresponding power of r and get the total sum.
+To convert from base /r/ to base-10, multiply each digit by the corresponding power of r and get the total sum.
 
 Example:
 
