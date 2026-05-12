@@ -1,0 +1,39 @@
+#+TITLE: ENGDATA Notes
+#+AUTHOR: Tyrone
+#+STARTUP: showall imagelines latexpreview
+
+* Type of Data
+
+Study of the population is a *census*. Study of a sample of a population is a *survey*.
+
+Data can either be numerical or categorical. Just because the data points are numbers, it doesn't mean they are numerical (e.g. student ID numbers, years).
+
+The *Delphi technique* is when you send rounds of questionnaires to a panel of experts to reach a consensus.
+
+* Types of Probability Sampling
+
+1. _Simple Random Sampling_: Every member has an equal chance of being selected (e.g. lottery, random number generator)
+
+2. _Cluster Sampling_: The population is divided by clusters, which is often geographical. And entire clusters are randomly selected.
+
+3. _Stratified Sampling_: The population is divided into subgroups (strata) based on shared characteristics and random samples are taken from each strata. 
+
+4. _Systematic Sampling_: Every n-th member of a group is selected.
+
+
+The point of probability sampling is that each individual has a known, non-zero chance of being selected; minimizing bias and allowing for generalization.
+
+* Types of Non-Probability Sampling
+
+1. _Convenience Sampling_: Individuals are selected for their availability and accessibility.
+
+2. _Voluntary Respone Sampling_: Individuals select themselves.
+
+3. _Purposive/Judgmental Sampling_: The researcher uses their expertise to select a sample that is most useful to the purpose of the research.
+
+4. _Snowball Sampling_: Participants refer other participants.
+
+5. _Quota Sampling_: Selecting a specific number of individuals from different subgroups.
+
+These methods are faster and easier but risks higher bias. Most often used in exploratory research.
+
