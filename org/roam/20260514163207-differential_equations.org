@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       0202fd6d-ddff-4906-b83b-5cfba294884c
+:END:
+#+title: Differential Equations
+#+STARTUP: showall latexpreview
+
+* Ordinary Differential Equations (ODE)
+
+
+
+* Partial Differential Equations (PDE)
+
+These are equations that contains partial derivatives only.

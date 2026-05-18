@@ -41,4 +41,258 @@ $$1162.43_{7} = (1 x 7^{3}) + (1 x 7^{2}) + (6 x 7^{1}) + (2 x 7^{0}) + (4 x 7^{
 $$1011_{2} = (1 x 2^{3}) + (0 x 2^{2}) + (1 x 2^{1}) + (1 x 2^{0}) = 8 + 0 + 2 + 1 = 11 = 11_{10}$$
 
  Remember the binary, octal, and hexadecimal systems.
+
+ Four 0s and 1s = 4 bits = 1 nibble.
+
+ 0001 = 4 bits = 1 nibble.
  
+| 0000 |  0 | 0 |
+| 0001 |  1 | 1 |
+| 0010 |  2 | 2 |
+| 0011 |  3 | 3 |
+| 0100 |  4 | 4 |
+| 0101 |  5 | 5 |
+| 0110 |  6 | 6 |
+| 0111 |  7 | 7 |
+| 1000 |  8 | 8 |
+| 1001 |  9 | 9 |
+| 1010 | 10 | A |
+| 1011 | 11 | B |
+| 1100 | 12 | C |
+| 1101 | 13 | D |
+| 1110 | 14 | E |
+| 1111 | 15 | F |
+
+
+* Examples/Practice:
+
+250.125_{10} to binary.
+
+250 \div 2 = 125 Remainder 0
+125 \div 2 = 62 Remainder 1
+62 \div 2 = 31 Remainder 0
+31 \div 2 = 15 Remainder 1
+15 \div 2 = 7 Remainder 1
+7 \div 2 = 3 Remainder 1
+3 \div 2 = 1 Remainder 1
+1 \div 2 = 0 Remainder 0
+
+0.125 \times 2 =  0.25
+0.25 \times 2 = 0.5
+0.5 \times 2 = 1.0
+0 \times 2 = 0
+
+0.125_{10} = 0.001_{2}
+
+250 to binary = 01111010_{2}
+Calc answer: 11111010
+
+250.125_{10} = 11111010.001_{2}
+Calc answer: 11111010.001
+
+------
+250.125_{10} to Octal
+
+250 \div 8 = 31 Remainder 2
+31 \div 8 = 3 Remainder 7
+3 \div 8 = 0 Remainder 3
+
+250_{10} = 372_{8}
+
+0.125_{10}
+
+0.125_{10} = 0.1_{8}
+
+Calc answer: 372.1
+-----
+250.125_{10} to hexadecimal.
+
+250 \div 16 = 15 Remainder A [10]
+15 \div 16 = 0 Remainder 15 [F]
+
+250_{10} = FA_{16}
+
+0.125 \times 16 = 2 .0
+
+0.125_{10} = 0.2_{16}
+-----
+
+153.513_{10} to binary, octal, hexa. (PRACTICE)
+
+*BINARY*
+
+153 \div 2 = 76 Remainder 1
+76 \div 2 = 38 Remainder 0
+38 \div 2 = 19 Remainder 0
+19 \div 2 = 9 Remainder 1
+9 \div 2 = 4 Remainder 1
+4 \div 2 = 2 Remainder 0
+2 \div 2 = 1 Remainder 0
+1 \div 2 = 0 Remainder 1
+
+153_{10 }= 10011001
+
+0.513 \times 2 = 1.026
+0.026 \times 2 = 0.052
+0.052 \times 2 = 0.104
+0.104 \times 2 = 0.208
+0.208 \times 2 = 0.416
+0.416 \times 2 = 0.832
+0.832 \times 2 = 1.664
+Non-terminating....
+
+Approximate: 0.513_{10} = .1000001
+
+10011001 + .1000001 = 10011001.1000001
+
+153.513_{10} = 10011001.1000001_{2}
+
+
+
+*Octal*
+
+153 \div 8 = 19 Remainder 1
+19 \div 8 = 2 Remainder 3
+2 \div 8 = 0 Remaider 2
+
+153_{10} = 231_{8}
+
+
+*Hexadecimal*
+
+153 \div 16 = 9 Remaider 9
+9 \div 16 = 0 Remainder 9
+
+153_{10} = 99_{16}
+
+
+
+-----
+
+* Convert from base-n to base-m
+
+
+* Mental Conversion
+
+59_{10} to binaryb
+
+4 bits is max 15.
+5 bits is max 31
+6 bits is max 63.
+And so on.
+
+59 fits in 6 bits.
+
+_  _  _  _  _  _
+2^{5} 2^{4} 2^{3} 2^{2} 2^{1} 2^{0}
+32 16 8  4 2 1
+
+HOW MANY 32 IN 59? 1
+59 -32 = 27
+HOW MANY 16 IN 27? 1
+27 - 16 = 11
+HOW MANY 8 IN 11? 1
+11 - 8 = 3
+HOW MANY 4 IN 3? 0
+3 - 4 = -1
+HOW MANY 2 IN -1?
+
+
+* Arithmetic operations on different base numbers.
+
+1011.01_{2} + 0110.10_{2} = 10001.11_{2}
+
+*ALIGN THE DECIMAL POINT*
+*REMEMBER THE HIGHEST CHARACTER ALLOWED IN EACH BASE SYSTEM*
+
+*ENDCARRY*?
+
+173.54_{8} + 365.437_{8} = 538.977_{8}
+
+** Subtraction using complement
+
+There are two complements:
+
+1. /r/'s complement
+2. (/r/ - 1)'s complement
+
+Where /r/ is the radix.
+
+*BINARY EXAMPLE*
+
+1010 - 0011
+
+1. To get 2's complement, just flip the bits of the thing being subtracting by.
+
+   So, 0011 --> 1100
+
+2. 1's complement is 2's complement + 1 (regardless of base).
+   
+   So 1100 + 1 = 1101
+
+3. Then sum the 2's complement with the other original term.
+
+   1010 + 1101 = 10111
+
+   Ignore the endcarry, so 10111 --> 0111
+
+1010_{2} - 0011_{2} = 0111_{2}
+
+*DECIMAL EXAMPLE*
+
+800 - 374
+
+(10 - 1) - 3 = 6
+(10 - 1) - 7 = 2
+(10 - 1) - 4 = 5
+
+374 --> 625 --> 625 + 1 = 626
+
+800 + 626 = 1426 --> 426
+
+800 - 374 = 426
+
+
+*OCTAL EXAMPLE*
+
+600_{8} - 345_{8}
+
+7 - 3 = 4
+7 - 4 = 3
+7 - 5 = 2
+
+345 --> 432 --> 432 + 1 = 433
+
+600 + 433 = 1233 --> 233_{8}
+
+*BASE-7 EXAMPLE*
+
+600 - 345
+
+6 - 3 = 3
+6 - 4 = 2
+6 - 5 = 1
+
+345 --> 321 --> 321 + 1 = 322
+
+600 + 322 = 1222 --> 222_{7}
+
+
+** Multiplication
+
+Unless you're using binary, it is easier, faster, and less prone to mistakes if you just convert to decimals, do the operation, and then convert back.
+
+*BINARY EXAMPLE*
+
+101_{2} \times 011_{2}
+
+101 \times 1 = 101
+101 \times 10 = 1010
+101 \times 000 = 00000
+
+101 + 1010 + 00000 = 01111_{2}
+
+_ \times 0 = 0
+_ \times 1 = itself
+
+** Division

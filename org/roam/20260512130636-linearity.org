@@ -2,6 +2,7 @@
 :ID:       7bff375b-0e2f-432a-8bdc-17ef4a054e58
 :END:
 #+title: Linearity
+#+STARTUP: showall
 
 A property of mathematical systems or relationships where the output is directly proportional to the input.
 
@@ -18,6 +19,8 @@ Differential equations are linear if the dependent variable (usually /y/) and it
 3. And have coefficients that depend only on the independent variable (/x/).
 
 The differential equation may feature non-linear functions but only if they are applied soley on the independent variable.
+
+See [[id:8fde70c6-a95a-48ac-a958-148064903274][Linear ODEs]]
 
 ** Superposition
 

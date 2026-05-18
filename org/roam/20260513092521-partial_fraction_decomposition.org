@@ -1,0 +1,77 @@
+:PROPERTIES:
+:ID:       b4c0784c-276d-4cd8-9443-10767201c0c0
+:END:
+#+title: Partial Fraction Decomposition
+#+STARTUP: latexpreview showall inlineimages
+
+Partial fraction decomposition is a technique used to split complex, rational expressions into simpler, manageable fractions.
+
+But if the numerator's degree is greater than or equal to the denominator's degree, you must perform polynomial long division first.
+
+There are four cases of partial fraction decomposition.
+
+* Cases
+
+** Distinct Linear Factors
+
+When the denominator of the expression has *unique, non-repeating* factors.
+Each factor gets its own *constant* numerator.
+
+The form is:
+
+$$\frac{A}{x - a} + \frac{B}{x-b}$$
+
+
+** Repeated Linear Factors
+
+The denominator is a *repeated, linear*[fn:1] factors: (x - a)^{n}
+You must include terms for each power up to /n/.
+
+The form is:
+$$\frac{A_{1}}{(x-a)^{1}} + \frac{A_{2}}{(x-a)^{2}} + ... + \frac{A_{n}}{(x - a)^{n}}$$
+
+
+** Distinct Irreducible Quadratic Factors
+
+The factor is *irreducible and quadratic*.
+The numerator has two terms: /x/ to the first power with a constant coefficient and constant.
+
+The form is:
+
+$$\frac{Ax + B}{ax^{2} + bx + c}$$
+
+
+** Repeated Irreducible Quadratic Factors
+
+Apply the same rule for the repeated, linear factors. Add terms for each power of the repeated quadratic factor.
+
+The form is:
+
+$$\frac{A_{1}x + B_{1}}{(ax^{2 }+ bx + c)^{1}} + \frac{A_{2}x + B_{2}}{(ax^{2} + bx + c)^{2}} + ... + \frac{A_{n}x + B_{n}}{(ax^{2} + bx + c)^{n}}$$
+
+
+
+* Solving using partial fraction decomposition
+
+1. First, ensure that the expression is *proper*, the degree of the numerator is greater than the degree of the numerator. Hence the need to apply polynomial long division first.
+
+2. Apply the cases. Equate the expression to correct form.
+
+3. Multiply both sides of the new equation by the product of the case denominator/s.
+
+4. Find the zeroes for each of constant in the numerator.
+
+5.  Using the zeroes of the other constants, solve for the value of each constant.
+
+6. With the values of each numerator constant obtained, rewrite the case form with those values.
+
+The expression is now simplified.
+
+A system of equations may be created in the process and will be needed to be solved.
+
+
+
+_FOOTNOTES_:
+
+[fn:1] See [[id:7bff375b-0e2f-432a-8bdc-17ef4a054e58][Linearity]]
+[fn:2] Irreducible means it cannot be simplified further.
