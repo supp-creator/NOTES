@@ -1,0 +1,17 @@
+#+TITLE: Sample Mathematical Paper made with LaTeX
+#+AUTHOR: Tyrone
+
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [11pt, twocolumn]
+
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{amssymb}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{geometry}
+#+LATEX_HEADER: \geometry{margin=0.75in}
+
+#+OPTIONS: toc:nil
+
+* Overview
+
+*Ordinary Differential Equations*

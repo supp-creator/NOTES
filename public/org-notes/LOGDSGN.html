@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-05-19 Tue 00:13 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Logical Gates Design Notes</title>
+<meta name="author" content="Tyrone" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mnl-chtml.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Logical Gates Design Notes</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgb6b96ef">Introduction to Digial Electronic (Logic Circuit Design)</a>
+<ul>
+<li><a href="#org27e0c05">Analog Signal vs Digital Signal</a></li>
+<li><a href="#org55bc158">Language of the Computer</a></li>
+</ul>
+</li>
+<li><a href="#org988e341">Examples/Practice:</a></li>
+<li><a href="#org6c82607">Convert from base-n to base-m</a></li>
+<li><a href="#org7db10b1">Mental Conversion</a></li>
+<li><a href="#orgd473fa9">Arithmetic operations on different base numbers.</a>
+<ul>
+<li><a href="#org54d60c8">Subtraction using complement</a></li>
+<li><a href="#org8cfcbc0">Multiplication</a></li>
+<li><a href="#org0bb2800">Division</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb6b96ef" class="outline-2">
+<h2 id="orgb6b96ef">Introduction to Digial Electronic (Logic Circuit Design)</h2>
+<div class="outline-text-2" id="text-orgb6b96ef">
+</div>
+<div id="outline-container-org27e0c05" class="outline-3">
+<h3 id="org27e0c05">Analog Signal vs Digital Signal</h3>
+<div class="outline-text-3" id="text-org27e0c05">
+<p>
+A digital signal is easier to analyze than an analog signal since an analog wave is a Sine wave; it is varies over time:
+</p>
+
+<p>
+\[y(t) = A \sin (\omega t + \phi)\] 
+</p>
+
+<p>
+While a digital wave is a square wave, having only two possible values: <b>ON</b> or <b>OFF</b>.
+</p>
+
+<p>
+The 'ON' value is called the '<b>HIGH</b> State ' or the '<b>TRUE</b> State' or the '<b>1</b> State'.
+</p>
+
+<p>
+The 'OFF' value is also called the '<b>LOW</b> State' or the '<b>FALSE</b> State' or the '<b>0</b> State'.
+</p>
+
+<p>
+'ON' could mean 5V, 2V, or anything really. 'OFF' means 0V.
+</p>
+</div>
+</div>
+<div id="outline-container-org55bc158" class="outline-3">
+<h3 id="org55bc158">Language of the Computer</h3>
+<div class="outline-text-3" id="text-org55bc158">
+<p>
+The number system used is the decimal system (base-10).
+</p>
+
+<p>
+Write the <b>radix</b> or the base of a number as a subscript for this subject. To specify what base system you're using.
+</p>
+
+<p>
+Like this:
+</p>
+
+<p>
+\[123_{10} = 123\]
+</p>
+
+<p>
+or
+</p>
+
+<p>
+\[342.21_{5 }= 97.44_{10} = 97.44\]
+</p>
+
+<p>
+To convert from base <i>r</i> to base-10, multiply each digit by the corresponding power of r and get the total sum.
+</p>
+
+<p>
+Example:
+</p>
+
+<p>
+\[1162.43_{7} = (1 x 7^{3}) + (1 x 7^{2}) + (6 x 7^{1}) + (2 x 7^{0}) + (4 x 7^{-1}) + (3 x 7^{-2}) =  436.63 = 436.63_{10\]}
+</p>
+
+<p>
+\[1011_{2} = (1 x 2^{3}) + (0 x 2^{2}) + (1 x 2^{1}) + (1 x 2^{0}) = 8 + 0 + 2 + 1 = 11 = 11_{10}\]
+</p>
+
+<p>
+Remember the binary, octal, and hexadecimal systems.
+</p>
+
+<p>
+Four 0s and 1s = 4 bits = 1 nibble.
+</p>
+
+<p>
+0001 = 4 bits = 1 nibble.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">0000</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">0001</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">0010</td>
+<td class="org-right">2</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-right">0011</td>
+<td class="org-right">3</td>
+<td class="org-right">3</td>
+</tr>
+
+<tr>
+<td class="org-right">0100</td>
+<td class="org-right">4</td>
+<td class="org-right">4</td>
+</tr>
+
+<tr>
+<td class="org-right">0101</td>
+<td class="org-right">5</td>
+<td class="org-right">5</td>
+</tr>
+
+<tr>
+<td class="org-right">0110</td>
+<td class="org-right">6</td>
+<td class="org-right">6</td>
+</tr>
+
+<tr>
+<td class="org-right">0111</td>
+<td class="org-right">7</td>
+<td class="org-right">7</td>
+</tr>
+
+<tr>
+<td class="org-right">1000</td>
+<td class="org-right">8</td>
+<td class="org-right">8</td>
+</tr>
+
+<tr>
+<td class="org-right">1001</td>
+<td class="org-right">9</td>
+<td class="org-right">9</td>
+</tr>
+
+<tr>
+<td class="org-right">1010</td>
+<td class="org-right">10</td>
+<td class="org-right">A</td>
+</tr>
+
+<tr>
+<td class="org-right">1011</td>
+<td class="org-right">11</td>
+<td class="org-right">B</td>
+</tr>
+
+<tr>
+<td class="org-right">1100</td>
+<td class="org-right">12</td>
+<td class="org-right">C</td>
+</tr>
+
+<tr>
+<td class="org-right">1101</td>
+<td class="org-right">13</td>
+<td class="org-right">D</td>
+</tr>
+
+<tr>
+<td class="org-right">1110</td>
+<td class="org-right">14</td>
+<td class="org-right">E</td>
+</tr>
+
+<tr>
+<td class="org-right">1111</td>
+<td class="org-right">15</td>
+<td class="org-right">F</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org988e341" class="outline-2">
+<h2 id="org988e341">Examples/Practice:</h2>
+<div class="outline-text-2" id="text-org988e341">
+<p>
+250.125<sub>10</sub> to binary.
+</p>
+
+<p>
+250 &divide; 2 = 125 Remainder 0
+125 &divide; 2 = 62 Remainder 1
+62 &divide; 2 = 31 Remainder 0
+31 &divide; 2 = 15 Remainder 1
+15 &divide; 2 = 7 Remainder 1
+7 &divide; 2 = 3 Remainder 1
+3 &divide; 2 = 1 Remainder 1
+1 &divide; 2 = 0 Remainder 0
+</p>
+
+<p>
+0.125 &times; 2 =  0.25
+0.25 &times; 2 = 0.5
+0.5 &times; 2 = 1.0
+0 &times; 2 = 0
+</p>
+
+<p>
+0.125<sub>10</sub> = 0.001<sub>2</sub>
+</p>
+
+<p>
+250 to binary = 01111010<sub>2</sub>
+Calc answer: 11111010
+</p>
+
+<p>
+250.125<sub>10</sub> = 11111010.001<sub>2</sub>
+Calc answer: 11111010.001
+</p>
+
+<hr />
+<p>
+250.125<sub>10</sub> to Octal
+</p>
+
+<p>
+250 &divide; 8 = 31 Remainder 2
+31 &divide; 8 = 3 Remainder 7
+3 &divide; 8 = 0 Remainder 3
+</p>
+
+<p>
+250<sub>10</sub> = 372<sub>8</sub>
+</p>
+
+<p>
+0.125<sub>10</sub>
+</p>
+
+<p>
+0.125<sub>10</sub> = 0.1<sub>8</sub>
+</p>
+
+<p>
+Calc answer: 372.1
+</p>
+<hr />
+<p>
+250.125<sub>10</sub> to hexadecimal.
+</p>
+
+<p>
+250 &divide; 16 = 15 Remainder A [10]
+15 &divide; 16 = 0 Remainder 15 [F]
+</p>
+
+<p>
+250<sub>10</sub> = FA<sub>16</sub>
+</p>
+
+<p>
+0.125 &times; 16 = 2 .0
+</p>
+
+<p>
+0.125<sub>10</sub> = 0.2<sub>16</sub>
+</p>
+<hr />
+
+<p>
+153.513<sub>10</sub> to binary, octal, hexa. (PRACTICE)
+</p>
+
+<p>
+<b>BINARY</b>
+</p>
+
+<p>
+153 &divide; 2 = 76 Remainder 1
+76 &divide; 2 = 38 Remainder 0
+38 &divide; 2 = 19 Remainder 0
+19 &divide; 2 = 9 Remainder 1
+9 &divide; 2 = 4 Remainder 1
+4 &divide; 2 = 2 Remainder 0
+2 &divide; 2 = 1 Remainder 0
+1 &divide; 2 = 0 Remainder 1
+</p>
+
+<p>
+153<sub>10 </sub>= 10011001
+</p>
+
+<p>
+0.513 &times; 2 = 1.026
+0.026 &times; 2 = 0.052
+0.052 &times; 2 = 0.104
+0.104 &times; 2 = 0.208
+0.208 &times; 2 = 0.416
+0.416 &times; 2 = 0.832
+0.832 &times; 2 = 1.664
+Non-terminating&#x2026;.
+</p>
+
+<p>
+Approximate: 0.513<sub>10</sub> = .1000001
+</p>
+
+<p>
+10011001 + .1000001 = 10011001.1000001
+</p>
+
+<p>
+153.513<sub>10</sub> = 10011001.1000001<sub>2</sub>
+</p>
+
+
+
+<p>
+<b>Octal</b>
+</p>
+
+<p>
+153 &divide; 8 = 19 Remainder 1
+19 &divide; 8 = 2 Remainder 3
+2 &divide; 8 = 0 Remaider 2
+</p>
+
+<p>
+153<sub>10</sub> = 231<sub>8</sub>
+</p>
+
+
+<p>
+<b>Hexadecimal</b>
+</p>
+
+<p>
+153 &divide; 16 = 9 Remaider 9
+9 &divide; 16 = 0 Remainder 9
+</p>
+
+<p>
+153<sub>10</sub> = 99<sub>16</sub>
+</p>
+
+
+
+<hr />
+</div>
+</div>
+<div id="outline-container-org6c82607" class="outline-2">
+<h2 id="org6c82607">Convert from base-n to base-m</h2>
+</div>
+
+
+<div id="outline-container-org7db10b1" class="outline-2">
+<h2 id="org7db10b1">Mental Conversion</h2>
+<div class="outline-text-2" id="text-org7db10b1">
+<p>
+59<sub>10</sub> to binaryb
+</p>
+
+<p>
+4 bits is max 15.
+5 bits is max 31
+6 bits is max 63.
+And so on.
+</p>
+
+<p>
+59 fits in 6 bits.
+</p>
+
+<p>
+_  _  _  _  _  _
+2<sup>5</sup> 2<sup>4</sup> 2<sup>3</sup> 2<sup>2</sup> 2<sup>1</sup> 2<sup>0</sup>
+32 16 8  4 2 1
+</p>
+
+<p>
+HOW MANY 32 IN 59? 1
+59 -32 = 27
+HOW MANY 16 IN 27? 1
+27 - 16 = 11
+HOW MANY 8 IN 11? 1
+11 - 8 = 3
+HOW MANY 4 IN 3? 0
+3 - 4 = -1
+HOW MANY 2 IN -1?
+</p>
+</div>
+</div>
+<div id="outline-container-orgd473fa9" class="outline-2">
+<h2 id="orgd473fa9">Arithmetic operations on different base numbers.</h2>
+<div class="outline-text-2" id="text-orgd473fa9">
+<p>
+1011.01<sub>2</sub> + 0110.10<sub>2</sub> = 10001.11<sub>2</sub>
+</p>
+
+<p>
+<b>ALIGN THE DECIMAL POINT</b>
+<b>REMEMBER THE HIGHEST CHARACTER ALLOWED IN EACH BASE SYSTEM</b>
+</p>
+
+<p>
+<b>ENDCARRY</b>?
+</p>
+
+<p>
+173.54<sub>8</sub> + 365.437<sub>8</sub> = 538.977<sub>8</sub>
+</p>
+</div>
+<div id="outline-container-org54d60c8" class="outline-3">
+<h3 id="org54d60c8">Subtraction using complement</h3>
+<div class="outline-text-3" id="text-org54d60c8">
+<p>
+There are two complements:
+</p>
+
+<ol class="org-ol">
+<li><i>r</i>'s complement</li>
+<li>(<i>r</i> - 1)'s complement</li>
+</ol>
+
+<p>
+Where <i>r</i> is the radix.
+</p>
+
+<p>
+<b>BINARY EXAMPLE</b>
+</p>
+
+<p>
+1010 - 0011
+</p>
+
+<ol class="org-ol">
+<li><p>
+To get 2's complement, just flip the bits of the thing being subtracting by.
+</p>
+
+<p>
+So, 0011 &#x2013;&gt; 1100
+</p></li>
+
+<li><p>
+1's complement is 2's complement + 1 (regardless of base).
+</p>
+
+<p>
+So 1100 + 1 = 1101
+</p></li>
+
+<li><p>
+Then sum the 2's complement with the other original term.
+</p>
+
+<p>
+1010 + 1101 = 10111
+</p>
+
+<p>
+Ignore the endcarry, so 10111 &#x2013;&gt; 0111
+</p></li>
+</ol>
+
+<p>
+1010<sub>2</sub> - 0011<sub>2</sub> = 0111<sub>2</sub>
+</p>
+
+<p>
+<b>DECIMAL EXAMPLE</b>
+</p>
+
+<p>
+800 - 374
+</p>
+
+<p>
+(10 - 1) - 3 = 6
+(10 - 1) - 7 = 2
+(10 - 1) - 4 = 5
+</p>
+
+<p>
+374 &#x2013;&gt; 625 &#x2013;&gt; 625 + 1 = 626
+</p>
+
+<p>
+800 + 626 = 1426 &#x2013;&gt; 426
+</p>
+
+<p>
+800 - 374 = 426
+</p>
+
+
+<p>
+<b>OCTAL EXAMPLE</b>
+</p>
+
+<p>
+600<sub>8</sub> - 345<sub>8</sub>
+</p>
+
+<p>
+7 - 3 = 4
+7 - 4 = 3
+7 - 5 = 2
+</p>
+
+<p>
+345 &#x2013;&gt; 432 &#x2013;&gt; 432 + 1 = 433
+</p>
+
+<p>
+600 + 433 = 1233 &#x2013;&gt; 233<sub>8</sub>
+</p>
+
+<p>
+<b>BASE-7 EXAMPLE</b>
+</p>
+
+<p>
+600 - 345
+</p>
+
+<p>
+6 - 3 = 3
+6 - 4 = 2
+6 - 5 = 1
+</p>
+
+<p>
+345 &#x2013;&gt; 321 &#x2013;&gt; 321 + 1 = 322
+</p>
+
+<p>
+600 + 322 = 1222 &#x2013;&gt; 222<sub>7</sub>
+</p>
+</div>
+</div>
+<div id="outline-container-org8cfcbc0" class="outline-3">
+<h3 id="org8cfcbc0">Multiplication</h3>
+<div class="outline-text-3" id="text-org8cfcbc0">
+<p>
+Unless you're using binary, it is easier, faster, and less prone to mistakes if you just convert to decimals, do the operation, and then convert back.
+</p>
+
+<p>
+<b>BINARY EXAMPLE</b>
+</p>
+
+<p>
+101<sub>2</sub> &times; 011<sub>2</sub>
+</p>
+
+<p>
+101 &times; 1 = 101
+101 &times; 10 = 1010
+101 &times; 000 = 00000
+</p>
+
+<p>
+101 + 1010 + 00000 = 01111<sub>2</sub>
+</p>
+
+<p>
+_ &times; 0 = 0
+_ &times; 1 = itself
+</p>
+</div>
+</div>
+<div id="outline-container-org0bb2800" class="outline-3">
+<h3 id="org0bb2800">Division</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Tyrone</p>
+<p class="date">Created: 2026-05-19 Tue 00:13</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

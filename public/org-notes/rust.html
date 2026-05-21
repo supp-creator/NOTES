@@ -1,0 +1,2037 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-05-19 Tue 00:13 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My Rust Notes</title>
+<meta name="author" content="tyrone" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mnl-chtml.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">My Rust Notes</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org1c714cf">Flow Control</a>
+<ul>
+<li><a href="#org58e1689">If-else statement</a></li>
+<li><a href="#org7830c06">match Expressions</a></li>
+<li><a href="#orgb61fa5a">Loops</a>
+<ul>
+<li><a href="#org8654eeb">While loops</a>
+<ul>
+<li><a href="#orgff26940"><i>while let</i> patters</a></li>
+</ul>
+</li>
+<li><a href="#org38a17a9">For loops</a></li>
+<li><a href="#org6ae5413">loop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8163845">Macros and #[Derive]</a></li>
+<li><a href="#orgc64edbd">User Defined Structures</a>
+<ul>
+<li><a href="#orgea8fbb3">Structs</a>
+<ul>
+<li><a href="#org452c405">Tuple Structs</a></li>
+</ul>
+</li>
+<li><a href="#orga01208d">Enums</a></li>
+<li><a href="#orgf7659a6">static</a></li>
+<li><a href="#orgbafc1b0">const</a></li>
+</ul>
+</li>
+<li><a href="#org83618ea">References</a>
+<ul>
+<li><a href="#org9051c65">Shared References</a></li>
+<li><a href="#orgc5a1a96">Exclusive References</a></li>
+</ul>
+</li>
+<li><a href="#orgd74f702">Slices</a></li>
+<li><a href="#orge404b71">Strings</a></li>
+<li><a href="#org571de19">Reference Validity</a></li>
+<li><a href="#orgab57c5f">Return</a></li>
+<li><a href="#orgad4087b">Pattern Matching</a>
+<ul>
+<li><a href="#orge9e49bc">Irrefutable Patterns</a></li>
+<li><a href="#org9d887ca">Destructuring Structs</a></li>
+<li><a href="#org287592d">Destructuring Enums</a></li>
+<li><a href="#org0122d4d">Let Control Flow</a>
+<ul>
+<li><a href="#org18cc91d">if let expression</a></li>
+<li><a href="#org6ee02ff">while let statements</a></li>
+<li><a href="#orgc75bae5">let else statement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgc0712b5">Methods</a></li>
+<li><a href="#orgacc4e1f">Traits</a>
+<ul>
+<li><a href="#org297ee9e">Implementing traits</a></li>
+<li><a href="#org6e2c2d5">Supertraits</a></li>
+<li><a href="#org8260c6f">Associated Types</a></li>
+</ul>
+</li>
+<li><a href="#orgb62a050">Generics</a>
+<ul>
+<li><a href="#orgc49adab">Generic Functions</a></li>
+<li><a href="#orgda10e5b">Generic structs</a></li>
+<li><a href="#orgbc4bb6a">Generic Structs with impl</a></li>
+<li><a href="#org7562243">Trait bounds - constraining what T can be</a></li>
+</ul>
+</li>
+<li><a href="#org91838e9">Closures</a></li>
+<li><a href="#orgabf5d21">Ownership</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1c714cf" class="outline-2">
+<h2 id="org1c714cf">Flow Control</h2>
+<div class="outline-text-2" id="text-org1c714cf">
+</div>
+<div id="outline-container-org58e1689" class="outline-3">
+<h3 id="org58e1689">If-else statement</h3>
+<div class="outline-text-3" id="text-org58e1689">
+<p>
+if condition {
+     code;
+} else if condition2 {
+     code;
+} else {
+     code;
+}
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Rust">
+fn main() {
+  let x = 10;
+  if x == 0 {
+      println!("zero");
+  } else if x &lt; 100 {
+     println!("less than 100");
+  } else {
+     println!("more than 100");
+  }
+  }
+
+</pre>
+</div>
+
+<p>
+An if statement may also be used as an expression.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Rust">
+  fn main() {
+
+  let x = 10;
+  let size = if x &lt; 20 { "small" } else { "large" };
+  println!("number size: {}", size);
+ }
+
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7830c06" class="outline-3">
+<h3 id="org7830c06">match Expressions</h3>
+<div class="outline-text-3" id="text-org7830c06">
+<p>
+match value {
+    value1 =&gt; code,
+    value2 =&gt; code,
+    value3 =&gt; code,
+    _ =&gt; {
+        default,
+        }
+    }
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  fn main() {
+      let flag = true;
+      let val = match flag {
+  	true =&gt; 1,
+  	false =&gt; 0,
+      };
+
+   println!("The value of {flag} is {val}.");
+   }
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-rust">   #[rustfmt::skip]
+   fn main() {
+
+       let input = 'x';
+       match input {
+   	'q'                         =&gt; println!("Quitting"),
+   	'a' | 's' | 'w' | 'd'       =&gt; println!("Moving around"),
+   	'0'..='9'                   =&gt; println!("Number input"),
+   	key if key.is_lowercase()   =&gt; println!("Lowercase: {key}"),
+   	_                           =&gt; println!("Something else"),
+       }
+   }
+
+
+
+</pre>
+</div>
+
+<p>
+As you may see, <b>'|'</b> may be used as an <b>OR</b>.
+</p>
+
+<p>
+<b>..</b> matches any number of items.
+</p>
+
+<p>
+1..=5 is used to represent a range.
+</p>
+
+<p>
+_ is a wild card.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb61fa5a" class="outline-3">
+<h3 id="orgb61fa5a">Loops</h3>
+<div class="outline-text-3" id="text-orgb61fa5a">
+</div>
+<div id="outline-container-org8654eeb" class="outline-4">
+<h4 id="org8654eeb">While loops</h4>
+<div class="outline-text-4" id="text-org8654eeb">
+<p>
+while condition {
+     code;
+ }
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+   fn main() {
+       let mut x = 0;
+
+       while x &lt; 10 {
+   	dbg!(10);  	
+   }
+ }
+
+</pre>
+</div>
+</div>
+<div id="outline-container-orgff26940" class="outline-5">
+<h5 id="orgff26940"><i>while let</i> patters</h5>
+<div class="outline-text-5" id="text-orgff26940">
+<p>
+This allows binding new variables into scope when the pattern matches.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org38a17a9" class="outline-4">
+<h4 id="org38a17a9">For loops</h4>
+<div class="outline-text-4" id="text-org38a17a9">
+<p>
+for x in firstValue..lastValue {
+     code;
+ }
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">   fn main() {
+       for x in 1..5 {
+   	dbg!(x);
+       }
+
+       for elem in [2, 4, 8, 16, 32] {
+   	dbg!(elem);
+       }
+   }
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6ae5413" class="outline-4">
+<h4 id="org6ae5413">loop</h4>
+<div class="outline-text-4" id="text-org6ae5413">
+<p>
+The loop statement just runs forever until it hits a break.
+</p>
+
+<p>
+loop {
+  code;
+  }
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  fn main() {
+      let mut i = 0;
+
+      loop {
+  	dbg!(i);
+  	i += 1;
+  	if i == 10 {
+  	    break;
+  	}
+      }
+  }
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8163845" class="outline-2">
+<h2 id="org8163845">Macros and #[Derive]</h2>
+<div class="outline-text-2" id="text-org8163845">
+<p>
+Macros are expanded during compilation into Rust code. The are indicated by a <b>!</b> at the end.
+Functionally, they are code that writes other code. Which is knwon as <span class="underline">metaprogramming</span>.
+</p>
+
+<p>
+<i>#[derive]</i> is used to implement traits for structs and enums. Traits such as <b>Debug</b>, <b>Clone</b>, <b>Copy</b>, <b>PartialEq</b>, <b>Eq</b>, <b>Hash</b>, <b>Default</b>, and stuff like that.
+These traits are already built-in or imported.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  #[derive(Debug, Clone, PartialEq)]
+  struct Point {
+      x: f64,
+      y: f64,
+  }
+
+  fn main() {
+      let p = Point { x: 1.0, y: 2.0 };
+      println!("{:?}", p);
+    }
+
+</pre>
+</div>
+
+<p>
+<i>#[derive(Debug)]</i> allows you to print a value with <i>{:?}</i> or <i>{:#?}</i>. Use this with <i>println!</i>.
+</p>
+
+<p>
+<i>#[derive(Clone, Copy)]</i> allows you to explicitly duplicate value using <i>.clone()</i> and then copy it somewhere else.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">  #[derive(Clone, Copy)]
+  struct Point {
+      x: f64,
+      y: f64,
+  }
+
+  fn main() {
+
+      let a = Point { x: 1.0, y: 2.0 };
+      let b = a;  // b copies a, not moved. This means a is still valid
+      let c = a.clone(); // cloned
+  }
+
+</pre>
+</div>
+
+<p>
+The trait <i>PartialEq</i> let's you compare using <b>==</b> and <b>!=</b>.
+The trait <i>Eq</i> requires <i>PartialEq</i> and signals that equality is total ( every value equals itself ).
+FLoats cannot implement <i>Eq</i> due to <i>NaN != NaN</i>.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b>Macros</b></td>
+<td class="org-left"><b>Function</b></td>
+</tr>
+
+<tr>
+<td class="org-left">println!("Hello, {}!", name);</td>
+<td class="org-left">Prints with a newline</td>
+</tr>
+
+<tr>
+<td class="org-left">print!("no newline");</td>
+<td class="org-left">Prints without a newline</td>
+</tr>
+
+<tr>
+<td class="org-left">eprintln!("error: {}", message)</td>
+<td class="org-left">Prints to stderr</td>
+</tr>
+
+<tr>
+<td class="org-left">format!("hello {}", name);</td>
+<td class="org-left">Returns a String instead of printing</td>
+</tr>
+
+<tr>
+<td class="org-left">panic!("something went wrong");</td>
+<td class="org-left">Immediately crashes with a message</td>
+</tr>
+
+<tr>
+<td class="org-left">todo!()</td>
+<td class="org-left">Marks unfinished code, panics if reached</td>
+</tr>
+
+<tr>
+<td class="org-left">dbg!()</td>
+<td class="org-left">prints file/line/value then returns the value</td>
+</tr>
+
+<tr>
+<td class="org-left">unreachable!()</td>
+<td class="org-left">Tells the compiler this point can't be reached</td>
+</tr>
+
+<tr>
+<td class="org-left">unimplemented!()</td>
+<td class="org-left">Essentially the same with todo!()</td>
+</tr>
+
+<tr>
+<td class="org-left">concat!("hello", " ", "world");</td>
+<td class="org-left">Concatenates strings at compile time</td>
+</tr>
+
+<tr>
+<td class="org-left">file!()</td>
+<td class="org-left">The current filename as &amp;str</td>
+</tr>
+
+<tr>
+<td class="org-left">vec!([1, 2, 3]);</td>
+<td class="org-left">Creates a vector</td>
+</tr>
+
+<tr>
+<td class="org-left">matches!(val1, val2);</td>
+<td class="org-left">Returns a bool depending on pattern match</td>
+</tr>
+
+<tr>
+<td class="org-left">assert<sub>eq</sub>!(val1, val2);</td>
+<td class="org-left">Panics if not equal</td>
+</tr>
+
+<tr>
+<td class="org-left">assert<sub>ne</sub>!(val1, val2);</td>
+<td class="org-left">Panics if equal</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgc64edbd" class="outline-2">
+<h2 id="orgc64edbd">User Defined Structures</h2>
+<div class="outline-text-2" id="text-orgc64edbd">
+</div>
+<div id="outline-container-orgea8fbb3" class="outline-3">
+<h3 id="orgea8fbb3">Structs</h3>
+<div class="outline-text-3" id="text-orgea8fbb3">
+<p>
+Similar to the ones in C and C++. Can store multiple variables with different data types.
+Unlike in C++, there is no inheritance between structs.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  struct Person {
+      name: String,
+      age: u8,
+  }
+</pre>
+</div>
+</div>
+<div id="outline-container-org452c405" class="outline-4">
+<h4 id="org452c405">Tuple Structs</h4>
+<div class="outline-text-4" id="text-org452c405">
+<p>
+If the names of the variables are unimportant, tuple structs are used instead.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  struct Coordinate(i32, i32);
+
+</pre>
+</div>
+
+<p>
+Used for single-field wrappers called newtypes.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  struct PoundsOfForce(f64);
+  struct Newtons(f64);
+
+  fn compute_force() -&gt; PoundsOfForce {
+      //...
+  }
+
+  fn convert_force(force: PoundsOfForce) -&gt; Newtons {
+      //...
+  }
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orga01208d" class="outline-3">
+<h3 id="orga01208d">Enums</h3>
+<div class="outline-text-3" id="text-orga01208d">
+<p>
+This defines one  type with a fixed set of possible values.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  #[derive(Debug)]
+  enum Direction {
+      Left,
+      Right,
+  }
+
+  #[derive(Debug)]
+  enum playerMove {
+      Pass,                          // Simple variant
+      Run(Direction),               // Tuple variant
+      Teleport { x:u32, y: u32 },  //Struct variant
+  }
+
+  fn main() {
+
+      let dir = Direction::Left;
+      let player_move: playerMove = playerMove::Run(dir);
+      println!("On this turn: {player_move:?}");
+  }
+
+
+</pre>
+</div>
+
+<p>
+<i>Direction</i> is now a type with variants. The variants being <i>Left</i> or <i>Right</i>.
+<i>Direction</i> has two values: <i>Direction::Left</i> and <i>Direction::Right</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf7659a6" class="outline-3">
+<h3 id="orgf7659a6">static</h3>
+<div class="outline-text-3" id="text-orgf7659a6">
+<p>
+Static variables will live during the whole execution of the program and cannot be moved.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  static MESSAGE: &amp;str = "Hello, World.";
+
+  
+  fn main() {
+      println!("{MESSAGE}");
+  }
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbafc1b0" class="outline-3">
+<h3 id="orgbafc1b0">const</h3>
+<div class="outline-text-3" id="text-orgbafc1b0">
+<p>
+Constants are evaluated at compile time to generate const values. I think?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  const DIGEST_SIZE: usize = 3;
+  const FILL_VALUE: u8 = calculate_fill_value();
+
+  const fn calculate_fill_value() -&gt; u8 {
+      if DIGEST_SIZE &lt; 10 { 42 } else { 13 }
+  }
+
+  fn compute_digest(text: &amp;str) -&gt; [u8; DIGEST_SIZE] {
+      let mut digest = [FILL_VALUE; DIGEST_SIZE];
+
+      for (idx, &amp;b) in text.as_bytes().iter().enumerate() {
+  	digest[idx % DIGEST_SIZE] = digest[idx % DIGEST_SIZE].wrapping_add(b);
+      }
+      digest
+  }
+
+  fn main() {
+      let digest = compute_digest("Hello");
+      println!("digest: {digest:?}");
+  }
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org83618ea" class="outline-2">
+<h2 id="org83618ea">References</h2>
+<div class="outline-text-2" id="text-org83618ea">
+<p>
+You may have many shared references but only one exclusive reference.
+</p>
+</div>
+<div id="outline-container-org9051c65" class="outline-3">
+<h3 id="org9051c65">Shared References</h3>
+<div class="outline-text-3" id="text-org9051c65">
+<p>
+A reference is a way to access another value without taking ownership of the value. This is called 'borrowing'.
+Shared references are read-only, the data cannot be changed.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  fn main() {
+      let a = 'A';
+      let b = 'B';
+
+      let mut r: &amp;char  = &amp;a;
+      dbg!(r);
+
+      r = &amp;b;
+      dbg!(r);
+  }
+
+
+</pre>
+</div>
+
+<p>
+A reference value is made with tehe <b>&amp;</b> operator. The <b>*</b> operator dereferences a reference.
+</p>
+
+<p>
+A shared reference to a type <i>T</i> has the type <i>&amp;T</i>.
+</p>
+
+<p>
+Rust can auto-dereference in many cases.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  let mut s = String::from("hello");
+  let c = &amp;mut s;
+
+  c.push_str(" world"); // no * needed, Rust auto-derefs for method calls
+  println!("{}", s); // "hello world"
+
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc5a1a96" class="outline-3">
+<h3 id="orgc5a1a96">Exclusive References</h3>
+<div class="outline-text-3" id="text-orgc5a1a96">
+<p>
+Exclusive references are known as mutable references. They allow you to change the value they are refering to.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  fn main() {
+
+      let mut point = (1, 2);
+      let x_coord = &amp;mut point.0;
+      *x_coord = 20;
+      println!("point: {point:?}"); // Output=&gt;  point: (20, 2)
+  }
+
+
+</pre>
+</div>
+
+<p>
+They have type <b>&amp;mut T</b>.
+</p>
+
+<p>
+Very similar to pointers. Create a variable and point it to the reference using &amp;mut.
+Then make changes to that variable using <b>&amp;mut</b> and the changes made to the new variable will reflect in the original variable.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd74f702" class="outline-2">
+<h2 id="orgd74f702">Slices</h2>
+<div class="outline-text-2" id="text-orgd74f702">
+<p>
+A slice let's you view into a larger collection.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  fn main() {
+
+      let a: [i32; 6] = [10, 20, 30, 40, 50, 60];
+      println!("a: {a:?}");
+
+      let s: &amp;[i32] = &amp;a[2..4];
+      println!("s: {s:?}");
+  }
+
+
+</pre>
+</div>
+
+<p>
+Slices borrow data.
+</p>
+
+<p>
+If the slice starts at index 0, you may drop the starting index so it will be <b>&amp;a[..a.len()]</b>
+</p>
+
+<p>
+The same is true for the last index, so <b>&amp;a[2..a.len()]</b> is the same as <b>&amp;a[2..]</b>.
+</p>
+
+<p>
+To make a slice of the full array, use <b>&amp;a[..]</b>
+</p>
+
+<p>
+You cannot append to a slice since it doesn't own the backing buffer.
+</p>
+</div>
+</div>
+<div id="outline-container-orge404b71" class="outline-2">
+<h2 id="orge404b71">Strings</h2>
+<div class="outline-text-2" id="text-orge404b71">
+<p>
+<b>&amp;str</b> is a slice of UTF-8 encoded bytes. This is a string slice, an immutable reference to UTF-8 encoded string data stored in a block of memory.
+<b>String</b> is an owned buffer of UTF-8 encoded bytes.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  fn main() {
+
+      let s1: &amp;str = "World";
+
+      let mut s2: String = String::from("Hello ");
+ 
+      s2.push_str(s1);
+      println!("s2: {s2}"); //Outputs: Hello World
+
+      let s3: &amp;str = &amp;s2[2..9];
+      println!("s3: {s3}"); // Outputs: 'llo Wor'
+  }
+
+</pre>
+</div>
+
+<p>
+The String data type of Rust is a wrapper around a vector of bytes.
+</p>
+
+<p>
+<b>String::new()</b> creates a new, empty string to which data can be added using the <b>.push()</b> and <b>.push<sub>str</sub>()</b> methods.
+</p>
+
+<p>
+<b>String::from()</b> creates an owned, growable String from a literal string.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  let s1 = String::from("hello");
+
+  let s2 = "hello".to_string(); //same as s1
+  
+  let s3 = String::new() //empty string
+      
+</pre>
+</div>
+
+<p>
+The <b>.push()</b> method appends a single character (char).
+</p>
+
+<p>
+The <b>.push<sub>str</sub>()</b> method appends a string slice (&amp;str).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  let mut s = String::from("hello");
+
+  s.push('!'); // this is fine
+  s.push("!"); //this is &amp;str, not char so this will lead to an error
+
+  s.push_str(" world"); 
+
+</pre>
+</div>
+
+<p>
+Other useful String methods
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  let mut s = String::from("hello world");
+
+  s.contains("world");                   // outputs true
+  s.replaces("world", "rust");          // returns new String "hello rust"
+  s.to_uppercase();                    // "HELLO WORLD"
+  s.len();                            // 11 bytes since it uses 11 characters
+  s.is_empty();                      // outputs false
+  s.split(" ").collect::&lt;Vec&lt;_&gt;&gt;(); // ["hello", "world"]    
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org571de19" class="outline-2">
+<h2 id="org571de19">Reference Validity</h2>
+<div class="outline-text-2" id="text-org571de19">
+<p>
+In Rust, references are always safe to use due to certain rules.
+</p>
+
+<p>
+One of the rules is that references can never be null.
+</p>
+
+<p>
+References can't also outlive the data they point to.
+</p>
+</div>
+</div>
+<div id="outline-container-orgab57c5f" class="outline-2">
+<h2 id="orgab57c5f">Return</h2>
+<div class="outline-text-2" id="text-orgab57c5f">
+<p>
+The <b>return</b> command does exists but is generally only used early in the program.
+</p>
+
+<p>
+Just type the variable you want the program to output at the end but don't end it with a semicolon.
+</p>
+
+<p>
+Rust will always return a value that doesn't end with semicolon.
+</p>
+
+<p>
+Unless you use the <b>return</b> keyword, then end with a semicolon.
+</p>
+</div>
+</div>
+<div id="outline-container-orgad4087b" class="outline-2">
+<h2 id="orgad4087b">Pattern Matching</h2>
+<div class="outline-text-2" id="text-orgad4087b">
+</div>
+<div id="outline-container-orge9e49bc" class="outline-3">
+<h3 id="orge9e49bc">Irrefutable Patterns</h3>
+<div class="outline-text-3" id="text-orge9e49bc">
+<div class="org-src-container">
+<pre class="src src-rust">  fn takes_tuple(tuple: (char, i32, bool)) {
+      
+      let a = tuple.0;
+      let b = tuple.1;
+      let c = tuple.2;
+
+      let (a, b, c) = tuple; //This does the same as the block above
+
+      let (_, b, c) = tuple; //Ignores the first element, binds only the second and third.
+
+      let (.., c) = tuple; //Ignores everthing but the last element
+  }
+
+  fn main() {
+      takes_tuple(('a', 777, false));
+  }
+
+
+</pre>
+</div>
+
+<p>
+Irrefutable means that the patters will always match the value on the RHS.
+</p>
+
+<p>
+Variable names are patterns that always match and bind the matched value into a new variable with that name.
+</p>
+
+<p>
+Patterns are type-specific.
+</p>
+
+<p>
+<b>_</b> is a pattern that always matches any value, discarding the matched value.
+</p>
+
+<p>
+<b>..</b> allows you to ignore multiple values at once.
+</p>
+</div>
+</div>
+<div id="outline-container-org9d887ca" class="outline-3">
+<h3 id="org9d887ca">Destructuring Structs</h3>
+<div class="outline-text-3" id="text-org9d887ca">
+<div class="org-src-container">
+<pre class="src src-rust">
+       struct Move {
+           delta: (i32, i32),
+           repeat: u32,
+       }
+
+       #[rustfmt::skip]
+       fn main() {
+           let m = Move { delta: (10, 0), repreat: 5};
+
+           match m {
+       	Move { delta: (0, 0), ..}         =&gt; println!("Standing still"),
+       	Move { delta: (x, 0), repeat }    =&gt; println!("{repeat} step x: {x}"),
+     	Move { delta: (0, y), repeat: 1 } =&gt; println!("Single step y: {y}"),
+  	  _                                 =&gt; println!("Other move"),   
+     }
+  }
+
+</pre>
+</div>
+
+<p>
+<b>x</b> and <b>y</b> aren't defined so running this code will just lead to a compile error.
+</p>
+</div>
+</div>
+<div id="outline-container-org287592d" class="outline-3">
+<h3 id="org287592d">Destructuring Enums</h3>
+<div class="outline-text-3" id="text-org287592d">
+<p>
+You may wonder what even is destructuring.
+</p>
+
+<p>
+Destructuring is unpacking a data structure into its individual components in one field.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  //This is unpacking each value of the tuple one by one.
+  let point = (3.0, 4.0);
+  let x = point.0;
+  let y = point.1;
+  println!("{} {}", x, y);
+
+  //This is destructuring; just takes one line.
+  let point = (3.0, 4.0);
+  let (x, y) = point;
+  println!("{} {}", x, y);
+
+
+</pre>
+</div>
+
+<p>
+Anyway, back to Enums.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  enum Shape {
+      Circle(f64),
+      Rectangle(f64, f64),
+      Triangle { base: f64, height: f64 },
+  }
+
+  let shape = Shape::Circle(5.0);
+
+  match shape {
+      Shape::Circle(r) =&gt; println!("CIrcle with radius {}", r),
+      Shape::Rectangle(w, h) =&gt; println!("Rectangle {}x{}", w, h),
+      Shape::Triangle { base, height } =&gt; println!("Triangle base={} height={}", base, height),
+      _ =&gt; println!("Some other shape."),
+  }
+
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0122d4d" class="outline-3">
+<h3 id="org0122d4d">Let Control Flow</h3>
+<div class="outline-text-3" id="text-org0122d4d">
+</div>
+<div id="outline-container-org18cc91d" class="outline-4">
+<h4 id="org18cc91d">if let expression</h4>
+<div class="outline-text-4" id="text-org18cc91d">
+<p>
+This lets you execute different code depending on whether a value matches a pattern.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  use std::time::Duration;
+
+  fn sleep_for(secs: f32) {
+
+      let result = Duration::try_from_secs_f32(secs);
+
+      if let Ok(duration) = result {
+  	std::thread::sleep(duration);
+  	println!("slept for {duration:?}");
+      }
+  }
+
+  fn main() {
+      sleep_for(-10.0);
+      sleep_for(0.8);
+  }
+
+
+</pre>
+</div>
+
+<p>
+Unlike <b>match</b>, <b>if let</b> does not have to cover all branches.
+</p>
+
+<p>
+This is used to hanlde <b>Some</b> values when working with <b>Options</b>.
+</p>
+
+<p>
+Unlike <b>match</b>, <b>if let</b> does not support guard clauses for pattern matching.
+</p>
+
+<p>
+With an <b>else</b> clause, this can be used as an expression.
+</p>
+</div>
+</div>
+<div id="outline-container-org6ee02ff" class="outline-4">
+<h4 id="org6ee02ff">while let statements</h4>
+<div class="outline-text-4" id="text-org6ee02ff">
+<p>
+This repeatedly tests a value against a pattern.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  fn main() {
+
+      let mut name = String::from("Comprehensive Rust");
+
+      while let Some(c) = name.pop() {
+  	dbg!(c);
+      }
+  }
+
+
+</pre>
+</div>
+
+<p>
+In this weird ass example to print out each character of a string in reverse order, <b>String::pop</b> returns <b>Some(c) until the string is empty, after which it will return *None</b>.
+</p>
+
+<p>
+Wait, what the heck does <b>Some()</b> do?
+</p>
+
+<p>
+<b>Some()</b> is a varaint of the <b>Option</b> enum.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  enum Option&lt;T&gt; {
+      Some(T),   // there IS a value, and this is it
+      None,     // there is NO value
+      
+  }
+
+</pre>
+</div>
+
+<p>
+<b>T</b> can be any type: <b>Some(5)</b>, <b>Some("hello")</b>, <b>Some(Point{&#x2026;})</b>, and such.
+</p>
+
+<p>
+Rust has no <b>null</b>. If a value is absent, the type system will need you to handle it.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  fn find_user(id: u32) -&gt; Option&lt;String&gt; {
+      if id == 1 {
+  	Some(String::from("Alice")) // found a value
+      } else {
+  	None // There really is no value 
+      }
+  }
+
+</pre>
+</div>
+
+<p>
+Anyway, <b>while let</b> loops will keep going so long as the value matches the pattern.
+</p>
+
+<p>
+This cannot be used as an expression because they may have no value if the condition is false.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc75bae5" class="outline-4">
+<h4 id="orgc75bae5">let else statement</h4>
+<div class="outline-text-4" id="text-orgc75bae5">
+<p>
+If you're just matching a pattern and returning from the funtion, use <b>let else</b>.
+The <b>else</b> case must diverge into <b>return</b>, <b>break</b>, or <b>panic</b> - anything but falling off the end of the block.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  fn hex_or_die_trying(maybe_string:Option&lt;String&gt;) -&gt; Result&lt;u32, String&gt; {
+      let Some(s) = maybe_string else {
+  	return Err(String::from("got None"));
+      };
+
+      let Some(first_byte_char) = s.chars().next() else {
+  	return Err(String::from("got empty string"));
+      };
+
+      let Some(digit) = first_byte_char.to_digit(16) else {
+  	return Err(String::from("not a hex digit"));
+      };
+
+      Ok(digit)
+  }
+
+
+</pre>
+</div>
+
+
+
+<p>
+So, <b>Result</b> is the same with <b>Option</b> but for error handling.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  enum Option&lt;T&gt; {
+      Some(T),
+      None,
+  }
+
+  enum Result&lt;T, E&gt; {
+      Ok(T),     // success, has a value 
+      Err(E),   // failure, has an error
+  }
+
+  fn divide(a: f64, b: f64) -&gt; Result&lt;f64, String&gt; {
+      if b == 0.0 {
+  	Err(String::from("cannot divide by zero"))
+      } else {
+  	Ok(a / b)
+      }
+  }
+
+  match divide(10.0, 2.0) {
+      Ok(result) =&gt; println!("quotient: {}", result),
+      Err(e) =&gt; println!("oops: {}", e),
+  }
+
+
+</pre>
+</div>
+
+<p>
+<b>E</b> type can be anything: a string message, <b>io::Error</b>, <b>ParseError</b>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  Result&lt;f64, String&gt;;  // If successful,  expect a float. Otherwise, a string.
+
+  Result&lt;u32, io::Error&gt;;
+
+  Result&lt;(), ParseError&gt;;   // T is () - success has no value, just that it 'works'
+  
+                  
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc0712b5" class="outline-2">
+<h2 id="orgc0712b5">Methods</h2>
+<div class="outline-text-2" id="text-orgc0712b5">
+<div class="org-src-container">
+<pre class="src src-rust">
+  // Copyright 2023 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+
+#[derive(Debug)]
+struct CarRace {
+    name: String,
+    laps: Vec&lt;i32&gt;,
+}
+
+impl CarRace {
+    // No receiver, a static method
+    fn new(name: &amp;str) -&gt; Self {
+        Self { name: String::from(name), laps: Vec::new() }
+    }
+
+    // Exclusive borrowed read-write access to self
+    fn add_lap(&amp;mut self, lap: i32) {
+        self.laps.push(lap);
+    }
+
+    // Shared and read-only borrowed access to self
+    fn print_laps(&amp;self) {
+        println!("Recorded {} laps for {}:", self.laps.len(), self.name);
+        for (idx, lap) in self.laps.iter().enumerate() {
+            println!("Lap {idx}: {lap} sec");
+        }
+    }
+
+    // Exclusive ownership of self (covered later)
+    fn finish(self) {
+        let total: i32 = self.laps.iter().sum();
+        println!("Race {} is finished, total lap time: {}", self.name, total);
+    }
+}
+
+fn main() {
+    let mut race = CarRace::new("Monaco Grand Prix");
+    race.add_lap(70);
+    race.add_lap(68);
+    race.print_laps();
+    race.add_lap(71);
+    race.print_laps();
+    race.finish();
+    // race.add_lap(42);
+}
+
+
+</pre>
+</div>
+
+<p>
+The <b>self</b> arguement specifies the object the method acts on (the 'receiver').
+</p>
+
+<p>
+It could be <b>&amp;self</b> which borrows the object from the caller using a shared and immutable reference. The object can be used again later.
+</p>
+
+<p>
+It could be <b>&amp;mut self</b> which borrows the object from the caller using a unique and mutable reference. The object can be used again later.
+</p>
+
+<p>
+It could be <b>self</b> which takes ownership of the object from the caller. The method becomes the new owner of the object. The object will be deallocated or 'dropped' when the method returns, unless ownership is explicitly transmitted.
+</p>
+
+<p>
+It could be <b>mut self</b> which is the same as above, taking new ownership, but the method can mutate the object.
+</p>
+
+<p>
+No receiver is also an option. This is usually used to create constructors that are called <b>new</b> by convention.
+</p>
+
+<p>
+Methods are called on an instance of a type such as a struct or enum. The first parameter represents the instance as <b>self</b>.
+</p>
+
+<p>
+<b>self</b>, the method receiver, is abbreviated for <b>self: Self</b>.
+</p>
+
+<p>
+<b>Self</b> is a type alias for the type tje <b>impl</b> blcok is in and can be used elsewhere within the block.
+</p>
+
+<p>
+<b>Basically, <i>self</i> refers to the instance. <i>Self</i> refers to the type.</b>
+</p>
+</div>
+</div>
+<div id="outline-container-orgacc4e1f" class="outline-2">
+<h2 id="orgacc4e1f">Traits</h2>
+<div class="outline-text-2" id="text-orgacc4e1f">
+<p>
+Traits are used to abstract over types, similar to interfaces.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  trait Pet {
+
+      fn talk(&amp;self) -&gt; String;
+
+      fn greet(&amp;self);
+  }
+
+
+</pre>
+</div>
+
+<p>
+Traits defines a number of methods that types must have in order to implement the trait.
+</p>
+</div>
+<div id="outline-container-org297ee9e" class="outline-3">
+<h3 id="org297ee9e">Implementing traits</h3>
+<div class="outline-text-3" id="text-org297ee9e">
+<div class="org-src-container">
+<pre class="src src-rust">
+    trait Pet {
+        fn talk(&amp;self) -&gt; String;
+
+        fn greet(&amp;self) {
+    	println!("Oh, what's your name? {}", self.talk());
+    	
+        }
+  }
+
+  struct Dog {
+      name: String,
+      age: i8,
+  }
+
+  impl Pet for Dog {
+      fn talk(&amp;self) -&gt; String {
+  	format!("Woof, my name is {}!", self.name)
+  	    
+      }
+   }
+
+  fn main() {
+      let fido = Dog { name: String::from("Fido"), age: 5 };
+      dbg!(fido.talk());
+      fido.greet();
+      
+  }
+
+
+
+</pre>
+</div>
+
+<p>
+To implement <b>Trait</b> for <b>Type</b>, use an <b>impl Trait</b> for <b>TYpe { .. }</b> block.
+</p>
+
+<p>
+Unlike in Go interfaces, just having matching methods is not enough: a <b>Cat</b> type with a <b>talk()</b> method would not automatically satisfy <b>Pet</b>. Unless it is in an <b>impl Pet</b> block.
+</p>
+</div>
+</div>
+<div id="outline-container-org6e2c2d5" class="outline-3">
+<h3 id="org6e2c2d5">Supertraits</h3>
+<div class="outline-text-3" id="text-org6e2c2d5">
+<p>
+A trait can require that types implementing it also implement othe traits, called <i>supertraits</i>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">// Copyright 2024 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+
+trait Animal {
+    fn leg_count(&amp;self) -&gt; u32;
+}
+
+trait Pet: Animal {
+    fn name(&amp;self) -&gt; String;
+}
+
+struct Dog(String);
+
+impl Animal for Dog {
+    fn leg_count(&amp;self) -&gt; u32 {
+        4
+    }
+}
+
+impl Pet for Dog {
+    fn name(&amp;self) -&gt; String {
+        self.0.clone()
+    }
+}
+
+fn main() {
+    let puppy = Dog(String::from("Rex"));
+    println!("{} has {} legs", puppy.name(), puppy.leg_count());
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8260c6f" class="outline-3">
+<h3 id="org8260c6f">Associated Types</h3>
+<div class="outline-text-3" id="text-org8260c6f">
+<p>
+These are placeholder types that are supplied by the trait implementation.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+     #[derive(Debug)]
+     struct Meters(i32);
+
+     #[derive(Debug)]
+     struct MetersSquared(i32);
+
+     trait Multiply {
+
+         type Output = MetersSquared;
+
+    	fn multiply(&amp;self, other: &amp;Self) -&gt; Self::Output;
+    }
+
+    impl Multiply for Meters {
+        type Output = MetersSquared;
+
+        fn multiply(&amp;self, other: &amp;Self) -&gt; Self::Output {
+    	MetersSquared(self.0 * other.0)
+    	    
+        }
+  }
+
+  fn main() {
+      println!("{:?}", Meters(10).multiply(&amp;Meters(20)));
+  }
+
+
+</pre>
+</div>
+
+<p>
+Associated types are sometimes called 'output types'.
+</p>
+
+<p>
+It is important to note that the implementer, not the caller, chooses this type.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb62a050" class="outline-2">
+<h2 id="orgb62a050">Generics</h2>
+<div class="outline-text-2" id="text-orgb62a050">
+<p>
+Generics lets you abstract algorithms or data structures over the types used or stores.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  fn pick&lt;T&gt;(cond: bool, left: T, right: T) -&gt; T {
+      if cond { left } else { right }
+  }
+
+  fn main() {
+      println!("pick a number: {:?}", pick(true, 222, 333));
+      println!("pick a string: {:?}", pick(false, 'L', 'R'));
+  }
+
+
+</pre>
+</div>
+
+<p>
+This can be used for stuff like sorting or a binary tree.
+</p>
+
+<p>
+Genercis can reduce code duplication; letting you write code that works for any type.
+This is essentially what <b>Options&lt;Some, None&gt;</b> and <b>Result&lt;Ok, Err&gt;</b> are.
+</p>
+</div>
+<div id="outline-container-orgc49adab" class="outline-3">
+<h3 id="orgc49adab">Generic Functions</h3>
+<div class="outline-text-3" id="text-orgc49adab">
+<p>
+Instead of:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">fn largest_i32(list: &amp;[i32]) -&gt; i32 {
+    let mut largest = list[0];
+    for &amp;item in list {
+        if item &gt; largest { largest = item; }
+    }
+    largest
+}
+
+fn largest_f64(list: &amp;[f64]) -&gt; f64 {
+    let mut largest = list[0];
+    for &amp;item in list {
+        if item &gt; largest { largest = item; }
+    }
+    largest
+}
+
+</pre>
+</div>
+
+<p>
+You can just:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  fn largest&lt;T: PartialOrd&gt;(list: &amp;[T]) -&gt; T {
+      let mut largest = list[0];
+      for &amp;item in list {
+  	if item = largest { largest = item }
+      }
+      largest
+  }
+
+
+  largest(&amp;[1, 2, 3, 4]);  //i32
+  largest(&amp;[1.0, 2.0, 3.0, 4.0]); //f64
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgda10e5b" class="outline-3">
+<h3 id="orgda10e5b">Generic structs</h3>
+<div class="outline-text-3" id="text-orgda10e5b">
+<p>
+This is what <b>Option</b> and <b>Result</b> are.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  struct Wrapper&lt;T&gt; {
+      value: T,
+  }
+
+  let w1 = Wrapper { value: 42 };
+  let w2 = Wrapper { value: "hello" };
+  let w3 = Wrapper { value: 3.14 };
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbc4bb6a" class="outline-3">
+<h3 id="orgbc4bb6a">Generic Structs with impl</h3>
+<div class="outline-text-3" id="text-orgbc4bb6a">
+<div class="org-src-container">
+<pre class="src src-rust">
+    struct Wrapper&lt;T&gt; {
+        value: T,
+    }
+
+    impl&lt;T&gt; Wrapper&lt;T&gt; {
+        fn new(value: T) - Self {
+    	Self { value }
+    }
+        fn get(&amp;self) - &amp;T {
+    	&amp;self.value
+        }
+    }
+    
+
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7562243" class="outline-3">
+<h3 id="org7562243">Trait bounds - constraining what T can be</h3>
+<div class="outline-text-3" id="text-org7562243">
+<p>
+Without bounds, T could be anything. Trait bounds say "T must implement this trait"
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">  use std::fmt::Display;
+
+  // T must implement Display trait if it is to be printed
+  fn print_value&lt;T: Display&gt;(value: T) {
+      println!("{}", value);
+  }
+
+  // T must implement Display and Clone traits to use this function
+  fn print_and_clone&lt;T: Display + Clone&gt;(value: T) {
+      let copy = value.clone();
+      println!("{}", copy);
+  }
+
+
+
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Generics</td>
+<td class="org-left">Meaning</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;T&gt;</td>
+<td class="org-left">placeholder for any type</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;T: Trait&gt;</td>
+<td class="org-left">T must implement this trait</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;T: Trait + Trait&gt;</td>
+<td class="org-left">T must imlplemnt these traits</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;T, U&gt;</td>
+<td class="org-left">multiple type placeholders</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org91838e9" class="outline-2">
+<h2 id="org91838e9">Closures</h2>
+<div class="outline-text-2" id="text-org91838e9">
+<p>
+Anonymous functions that can store variables or be passed to other functions. It is enclosed in <b>| |</b>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  fn add(a: i32, b: i32) -&gt; i32 { a + b }
+
+  let add = | a, b| a + b;      // same as above.
+
+</pre>
+</div>
+
+<p>
+Regular functions can't use variables from the surrounding scope. But closures can.
+This is called <i>capturing</i>. The closure "closes over" the variable.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  let x = 10;
+
+  let add_x = |n| n + x; // captures x from outside
+  println!("{}", add_x(5)); // outputs 15
+
+</pre>
+</div>
+
+<p>
+Closures can capture by <b>referencing &amp;T</b>, this is the default and just reads the value.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  let name = String::from("Alice");
+
+  let greet = || println!("hello {}", name); // borrows name variable
+
+  greet();
+  
+  println!("{}", name); // name still usable
+
+</pre>
+</div>
+
+<p>
+By mutable reference <b>&amp;mut T</b>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  let mut count = 0;
+
+  let mut increment = || count += 1; //mutably borrows count
+
+  increment();
+
+  increment();
+
+  println!("{}", count); // outputs 2
+
+
+</pre>
+</div>
+
+<p>
+By ownership with <b>move</b>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  let name = String::from("Alice");
+
+  let greet = move || println!("hello {}", name); // takes ownership of name
+
+  greet(); // name variable is gone. "Alice" has been moved into the closure.
+
+</pre>
+</div>
+
+<p>
+<span class="underline">Examples</span>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  let numbers = vec![1, 2, 3, 4, 5];
+
+  let doubled: Vec&lt;i32&gt; = numbers:iter()
+      .map(|n| n * 2)
+      .collect(); // [2, 4, 6, 8, 10]
+
+  let evens: Vec&lt;i32&gt; = numbers:iter()
+      .filter(|n| *n % 2 == 0)
+      .collect(); // [2, 4]
+
+  let first_even = numbers.iter()
+      .find(|n| *n % 2 == 0); // Some(2)
+
+  let sum = numbers.iter().fold(0, |acc, n| acc + n); // 15
+
+  let result: Vec&lt;i32&gt; = numbers.iter()
+      .filter(|n| *n % 2 ==0)
+      .map(|n| n * 10)
+      .collect(); // [20, 40]
+
+  // As a function argument
+
+  fn apply(f: impl Fn(i32) -&gt; i32, value: i32) -&gt; i32 {
+      f(value)
+  }
+
+  let double = |n| n * 2;
+
+  println!("{}", apply(double, 5)); // 10
+
+</pre>
+</div>
+
+<p>
+There are <b>three</b> traits for closure.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Fn</td>
+<td class="org-left">borrows immutably, can be called many times.</td>
+</tr>
+
+<tr>
+<td class="org-left">FnMut</td>
+<td class="org-left">borrows mutably, can be called many times.</td>
+</tr>
+
+<tr>
+<td class="org-left">FnOnce</td>
+<td class="org-left">takes ownership, can only be called once.</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgabf5d21" class="outline-2">
+<h2 id="orgabf5d21">Ownership</h2>
+<div class="outline-text-2" id="text-orgabf5d21">
+<p>
+Every variable in Rust has <b>exactly one owner at a time.</b>
+</p>
+
+<p>
+When the owner goes out of scope, the value is automatically dropped (freed).
+</p>
+
+<p>
+Ownership can be transferred, this is called a move.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-rust">
+  let s1 = String::from("hello");
+  let s2 = s1; // ownership of "hello" moves from s1 to s2.
+
+  println!("{}", s1); // Error since s1 no longer owns any value.
+
+  println!("{}", s2); // "hello"
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: tyrone</p>
+<p class="date">Created: 2026-05-19 Tue 00:13</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

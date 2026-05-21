@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-05-19 Tue 00:13 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Homogeneity</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mnl-chtml.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Homogeneity</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orga3eb01c">In First-Order ODEs (Function Scaling)</a>
+<ul>
+<li><a href="#org37e2d79">Solving First-Order ODEs</a></li>
+</ul>
+</li>
+<li><a href="#org998ec32">Homogeneity in Linear ODEs (Structure and Form)</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga3eb01c" class="outline-2">
+<h2 id="orga3eb01c">In First-Order ODEs (Function Scaling)</h2>
+<div class="outline-text-2" id="text-orga3eb01c">
+<p>
+A firt-order ODE in the form: \(\frac{dy}{dx} = f(x,y)\) is considered homogeneous if the function f(x,y) depends on the ration \(\frac{y}{x}\) .
+</p>
+
+<p>
+<b>To test for homogeneity:</b>
+</p>
+
+<p>
+\[f(tx, ty) = t^{n} f(x,y)\]
+</p>
+
+<p>
+A function is homogeneous of degree <i>n</i> if both variables are able to be scaled by constant <i>t</i> and yields the original function multiplied by t<sup>n</sup>.
+</p>
+
+<p>
+If the function is rewritten in:
+</p>
+
+<p>
+\[M(x,y)dx + N(x,y)dy = 0\]
+</p>
+
+<p>
+The function is homogeneous if the <b>degree</b> of <i>M(x,y)</i> and <i>N(x,y)</i> are equal.
+</p>
+
+<p>
+<span class="underline">For example</span>:
+</p>
+
+<p>
+\[(x^{2} + y^{2})dx + xydy = 0\]
+</p>
+
+<p>
+This function is homogeneous.
+</p>
+
+<p>
+Individually, x<sup>2</sup> and y<sup>2</sup> both have degree of 2.
+</p>
+
+<p>
+<i>xy</i> also has degree of 2. As x<sup>1</sup> &times; y<sup>1</sup> = <i>xy</i>.
+</p>
+
+<p>
+<b>EVERY TERM IS DEGREE 2.</b>
+</p>
+
+<p>
+If the degrees are mixed, that is not homogeneous.
+</p>
+
+<p>
+You must also inspect the variables.
+If the variables <i>x</i> and <i>y</i> always appear to be grouped together as a fraction, the function is homogeneous.
+</p>
+
+<p>
+<span class="underline">Examples</span>:
+</p>
+
+<p>
+\[ \frac{x}{y}  ||  \frac{y}{x}\]
+</p>
+
+<p>
+\[sin(\frac{x}{y}), cos(\frac{y}{x}), tan(\frac{y}{x})\]
+</p>
+
+<p>
+\[ln(y) - ln(x) = ln(\frac{y}{x})\]
+</p>
+
+<p>
+\[e^\frac{x}{y}\]
+</p>
+
+
+<p>
+Homogeneous first-order equations <b>cannot have standalone numbers added or subtracted</b>.
+This is becuase constants break the scaling property.
+</p>
+
+<p>
+\(\frac{dy}{dx} = \frac{x + y}{x}\) is homogeneous.
+</p>
+
+<p>
+\(\frac{dy}{dx} = \frac{x + y + 1}{x}\) is not homogeneous.
+</p>
+</div>
+<div id="outline-container-org37e2d79" class="outline-3">
+<h3 id="org37e2d79">Solving First-Order ODEs</h3>
+<div class="outline-text-3" id="text-org37e2d79">
+<p>
+The idea to solve any first-order ODE is to simplify it by substituting the ratio of x and y.
+</p>
+
+<p>
+\[ v = \frac{y}{x}\] &rarr; \[y = vx\]
+</p>
+
+<p>
+Remember that:
+</p>
+
+<p>
+\[y' = v * 1 + x * \frac{dv}{dx}\] &rarr; \[ \frac{dy}{dx} = v + x \frac{dv}{dx}\]
+</p>
+
+<p>
+Substitute these values into the original equation.
+</p>
+
+<p>
+Then to apply <b>separation of variables.</b> Before converting <i>v</i> back to the ratio.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org998ec32" class="outline-2">
+<h2 id="org998ec32">Homogeneity in Linear ODEs (Structure and Form)</h2>
+<div class="outline-text-2" id="text-org998ec32">
+<p>
+A linear ODE is homogeneous if every term contains the dependent variable or one of its derivatives <b>AND</b> if the equation is set to 0.
+</p>
+
+<p>
+It can generally be written as:
+</p>
+
+<p>
+\[a_{n}(x)y^{n} + a_{n-1}(x)y^{n-1}+..._a_{1}(x)y' + a_{0}(x)y = 0\]
+</p>
+
+<p>
+There can be <b>no forcing term</b>.
+</p>
+
+<p>
+If <i>y = 0</i> is a valid solution, it is homogeneous.
+</p>
+
+<p>
+If y<sub>1</sub> and y<sub>2</sub> are solutions to a linear homogeneous ODE, then any linear combination of C<sub>1</sub>y<sub>1</sub> + C<sub>2</sub>y<sub>2</sub> is also a solution.
+</p>
+
+<p>
+<b>To solve</b>
+</p>
+
+<p>
+If the coefficients are constant, use a characteristic polynomial.
+</p>
+
+
+<p>
+See 
+See <a href="20260512130636-linearity.html#ID-7bff375b-0e2f-432a-8bdc-17ef4a054e58">Linearity</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2026-05-19 Tue 00:13</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

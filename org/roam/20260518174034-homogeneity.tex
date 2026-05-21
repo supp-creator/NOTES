@@ -1,0 +1,136 @@
+% Created 2026-05-19 Tue 09:50
+% Intended LaTeX compiler: xelatex
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[a4paper,margin=0.75in, top=0.85in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{mathpazo}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\normalize\bfseries}{}{0em}{}
+\usepackage{enumitem}
+\setlist{noitemsep, topset=4pt}
+\usepackage{titling}
+\pretitle{\begin{center}\large\bfseries}
+\posttitle{\end{center}}
+\date{\today}
+\title{Homogeneity}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Homogeneity},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 30.2 (Org mode 9.7.11)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{In First-Order ODEs (Function Scaling)}
+\label{sec:org236f0f9}
+
+A firt-order ODE in the form: \(\frac{dy}{dx} = f(x,y)\) is considered homogeneous if the function f(x,y) depends on the ration \(\frac{y}{x}\) .
+
+\textbf{To test for homogeneity:}
+
+$$f(tx, ty) = t^{n} f(x,y)$$
+
+A function is homogeneous of degree \emph{n} if both variables are able to be scaled by constant \emph{t} and yields the original function multiplied by t\textsuperscript{n}.
+
+If the function is rewritten in:
+
+$$M(x,y)dx + N(x,y)dy = 0$$
+
+The function is homogeneous if the \textbf{degree} of \emph{M(x,y)} and \emph{N(x,y)} are equal.
+
+\uline{For example}:
+
+$$(x^{2} + y^{2})dx + xydy = 0$$
+
+This function is homogeneous.
+
+Individually, x\textsuperscript{2} and y\textsuperscript{2} both have degree of 2.
+
+\emph{xy} also has degree of 2. As x\textsuperscript{1} \texttimes{} y\textsuperscript{1} = \emph{xy}.
+
+\textbf{EVERY TERM IS DEGREE 2.}
+
+\begin{itemize}
+\item If the degrees are mixed, that is not homogeneous.
+
+\item \textbf{You must also inspect the variables.}
+
+\item If the variables \emph{x} and \emph{y} always appear to be grouped together as a fraction, the function is homogeneous.
+\end{itemize}
+
+
+\uline{Examples}:
+
+\begin{itemize}
+\item \(\frac{x}{y}\)
+
+\item \(\frac{y}{x}\)
+
+\item \(\sin\left(\frac{x}{y}\right)\)
+\end{itemize}
+
+
+Homogeneous first-order equations \textbf{cannot have standalone numbers added or subtracted}.
+This is becuase constants break the scaling property.
+
+\(\frac{dy}{dx} = \frac{x + y}{x}\) is homogeneous.
+
+\(\frac{dy}{dx} = \frac{x + y + 1}{x}\) is not homogeneous.
+\subsection{Solving First-Order ODEs}
+\label{sec:org23de1bf}
+
+The idea to solve any first-order ODE is to simplify it by substituting the ratio of x and y.
+
+\(v = \frac{y}{x}\) \(\to\) \(y = vx\)
+
+Remember that:
+
+
+\begin{align}
+v &= \frac{y}{x} \\
+y &= vx \\
+\frac{dy}{dx} &= v + x\frac{dv}{dx}
+\end{align}
+
+Substitute these values into the original equation.
+
+Then to apply \textbf{separation of variables.} Before converting \emph{v} back to the ratio.
+\section{Homogeneity in Linear ODEs (Structure and Form)}
+\label{sec:org9fa4af8}
+
+A linear ODE is homogeneous if every term contains the dependent variable or one of its derivatives \textbf{AND} if the equation is set to 0.
+
+It can generally be written as:
+
+\[
+a_n(x)y^{n} + a_{n-1}(x)y^{n-1}+...+a_1_{}(x)y'+ a_0_{}(x)y = 0
+\]
+
+There can be \textbf{no forcing term}.
+
+If \emph{y = 0} is a valid solution, it is homogeneous.
+
+If y\textsubscript{1} and y\textsubscript{2} are solutions to a linear homogeneous ODE, then any linear combination of \(C_1 y_1 + C_2 y_2\) is also a solution.
+
+\textbf{To solve}
+
+If the coefficients are constant, use a characteristic polynomial.
+\end{document}
