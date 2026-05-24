@@ -58,16 +58,15 @@ These methods are faster and easier but risks higher bias. Most often used in ex
 
 * Types of Comparisons
 
-1. _Component comparison_:
+1. _Component comparison_: "How does a part relate to the whole?" (pie chart)
 
-2. _Correlation comparison_:
+2. _Correlation comparison_: "Do two variables move together?" (scatter plot, bubble chart)
 
-3. _Frequency comparison_:
+3. _Frequency comparison_: "How many items fall into each range?" (histogram, bell curve)
 
-4. _Item comparison_:
+4. _Item comparison_: "How do things rank against each other?" (bar chart, column chart)
 
-5. _Time series_:
-
+5. _Time series_: "How does something change over time?" (line chart, area chart)
    ------
 
 * Probability
@@ -128,6 +127,8 @@ The formula:
 \[
 nPr = \frac{n!}{(n-r)!}
 \]
+
+Where /n/ is the total number of objects and /r/ is how many are being selected from /n/.
 
 ** Simple Combination
 
@@ -239,3 +240,92 @@ An expert in the field provides an educated guess of the probability.
 
 
 * Probability Rules
+
+** Union (A or B)
+
+\[
+P(A U B) = P(A) + P(B) - P(A \cap B)
+\]
+
+If A and B are mutually exclusive: $P(A U B) = P(A) + P(B)$ 
+
+** Intersection (A and B)
+
+\[
+P(A \cap B) = P(A) \times P(B | A)
+\]
+
+If A and B are independent: $P(A \cap B) = P(A) \times P(B)$
+
+** Complement of A
+
+\[
+P(A') = 1 - P(A)
+\]
+
+** Probability of B given A
+
+\[
+P(B|A) = \frac{P(A \cap B)}{P(A)}
+\]
+
+1. Find the probablity of A and B happening.
+
+2. Divide the probability of both events happening by the probability of event A
+
+If A and B are independent:
+
+
+$$\begin{align}
+P(B|A) &= \frac{P(A \cap B)}{P(A)} \tag{1}\\
+P(B) &= \frac{P(A \cap B)}{P(A)} \tag{2}\\
+P(B) \cdot P(A) &= P(A \cap B) \tag{3}\\
+P(A \cap B) &= P(A) \cdot P(B) \tag{4} 
+\end{align}$$
+
+** Venn Diagram
+
+The entire sample space can be expressed as:
+
+\[
+P(Sample Space) = P(A \cap B') + P(A' \cap B) + P(A \cap B)  + P(A' \cap B')
+\]
+
+
+** Contingency Table
+
+A tool used to facilitate the calculation of probabilities involving two events.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l c c c}
+\hline
+         & $B$              & $B'$               & Total   \\
+\hline
+$A$      & $P(A \cap B)$    & $P(A \cap B')$     & $P(A)$  \\
+$A'$     & $P(A' \cap B)$   & $P(A' \cap B')$    & $P(A')$ \\
+\hline
+Total    & $P(B)$           & $P(B')$            & $1$     \\
+\hline
+\end{tabular}
+\end{table}
+
+
+** Conditional Probability
+
+The probability that an event will occur given that some other event has already occured.
+
+\[
+P(A|B) = \frac{P(A\capB)}{P(B)}
+\]
+
+
+** Binomial Probability
+
+* Bayes Theorem
+
+Unlike usualky where P(effect|cause) is calculated, Bayesian reasoning tries to find P(cause|effect).
+
+\[
+P(A | B) = \frac{P(B | A) \times P(A)}{P(B)}
+\]
