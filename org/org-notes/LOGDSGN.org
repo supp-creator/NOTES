@@ -1,4 +1,4 @@
-#+TITLE: Logical Gates Design Notes
+q#+TITLE: Logical Gates Design Notes
 #+AUTHOR: Tyrone
 #+STARTUP: showall latexpreview inlineimages
 
@@ -25,43 +25,51 @@ The number system used is the decimal system (base-10).
 Write the *radix* or the base of a number as a subscript for this subject. To specify what base system you're using.
 
 Like this:
-
-$$123_{10} = 123$$
+\[
+123_{10} = 123
+\]
 
 or
 
-$$342.21_{5 }= 97.44_{10} = 97.44$$
+\[
+342.21_{5 }= 97.44_{10} = 97.44
+\]
 
 To convert from base /r/ to base-10, multiply each digit by the corresponding power of r and get the total sum.
 
 Example:
 
-$$1162.43_{7} = (1 x 7^{3}) + (1 x 7^{2}) + (6 x 7^{1}) + (2 x 7^{0}) + (4 x 7^{-1}) + (3 x 7^{-2}) =  436.63 = 436.63_{10$$}
+\[
+1162.43_{7} = (1 x 7^{3}) + (1 x 7^{2}) + (6 x 7^{1}) + (2 x 7^{0}) + (4 x 7^{-1}) + (3 x 7^{-2}) =  436.63 = 436.63_{10}
+\]
 
-$$1011_{2} = (1 x 2^{3}) + (0 x 2^{2}) + (1 x 2^{1}) + (1 x 2^{0}) = 8 + 0 + 2 + 1 = 11 = 11_{10}$$
+\[
+1011_{2} = (1 x 2^{3}) + (0 x 2^{2}) + (1 x 2^{1}) + (1 x 2^{0}) = 8 + 0 + 2 + 1 = 11 = 11_{10}
+\]
 
  Remember the binary, octal, and hexadecimal systems.
 
  Four 0s and 1s = 4 bits = 1 nibble.
 
- 0001 = 4 bits = 1 nibble.
+ 0001 = 4 bits = 1 *nibble*.
  
-| 0000 |  0 | 0 |
-| 0001 |  1 | 1 |
-| 0010 |  2 | 2 |
-| 0011 |  3 | 3 |
-| 0100 |  4 | 4 |
-| 0101 |  5 | 5 |
-| 0110 |  6 | 6 |
-| 0111 |  7 | 7 |
-| 1000 |  8 | 8 |
-| 1001 |  9 | 9 |
-| 1010 | 10 | A |
-| 1011 | 11 | B |
-| 1100 | 12 | C |
-| 1101 | 13 | D |
-| 1110 | 14 | E |
-| 1111 | 15 | F |
+| Binary | Decimal | Hexadecimal |
+|   0000 |       0 |           0 |
+|   0001 |       1 |           1 |
+|   0010 |       2 |           2 |
+|   0011 |       3 |           3 |
+|   0100 |       4 |           4 |
+|   0101 |       5 |           5 |
+|   0110 |       6 |           6 |
+|   0111 |       7 |           7 |
+|   1000 |       8 |           8 |
+|   1001 |       9 |           9 |
+|   1010 |      10 |           A |
+|   1011 |      11 |           B |
+|   1100 |      12 |           C |
+|   1101 |      13 |           D |
+|   1110 |      14 |           E |
+|   1111 |      15 |           F |
 
 
 * Examples/Practice:
@@ -165,8 +173,6 @@ Approximate: 0.513_{10} = .1000001
 
 153_{10} = 99_{16}
 
-
-
 -----
 
 * Convert from base-n to base-m
@@ -203,9 +209,8 @@ HOW MANY 2 IN -1?
 1011.01_{2} + 0110.10_{2} = 10001.11_{2}
 
 *ALIGN THE DECIMAL POINT*
-*REMEMBER THE HIGHEST CHARACTER ALLOWED IN EACH BASE SYSTEM*
 
-*ENDCARRY*?
+*REMEMBER THE HIGHEST CHARACTER ALLOWED IN EACH BASE SYSTEM*
 
 173.54_{8} + 365.437_{8} = 538.977_{8}
 
@@ -298,8 +303,186 @@ _ \times 1 = itself
 ** Division
 
 
-
-
 ------
+
+* Weighted Binary Code for Decimals
+
+Represents decimals digits (0 - 9) in binary, where each bit position has a *weight* (a value assigned to it).
+
+** Binary Coded Decimal
+
+Each decimal digit gets its own 4-bit binary group. The weights are just standard powers of 2: *8-4-2-1.*
+
+Also known as NBCD.
+
+| Decimal | 8 | 4 | 2 | 1 | Binary |   
+|       0 | 0 | 0 | 0 | 0 |   0000 |   
+|       1 | 0 | 0 | 0 | 1 |   0001 |   
+|       2 | 0 | 0 | 1 | 0 |   0010 |   
+|       3 | 0 | 0 | 1 | 1 |   0011 |   
+|       4 | 0 | 1 | 0 | 0 |   0100 |   
+|       5 | 0 | 1 | 0 | 1 |   0101 |   
+|       6 | 0 | 1 | 1 | 0 |   0110 |   
+|       7 | 0 | 1 | 1 | 1 |   0111 |   
+|       8 | 1 | 0 | 0 | 0 |   1000 |   
+|       9 | 1 | 0 | 0 | 1 |   1001 |   
+
+Each digit is encoded separately.
+
+*** Example:
+
+59 to BCD:
+5 = 0101
+9 = 1001
+
+Therefore, 59 = 0101 1001
+
+
+** 2421
+
+Same thing but use *2-4-2-1* weights instead of *8-4-2-1*.
+
+** 5421
+
+Same thing here as well.
+
+*** 5311
+
+This is a variant of *5-4-2-1*.
+
+
+* Non-Weighted Codes
+
+Non-weighted codes do not use weights. Obviously.
+They are designed around a specific property such as error checking.
+
+** XS-3 (Excess-3)
+
+Take each digit's NBCD value and add 3 (0011).
+
+*** Example:
+
+10 in XS-3
+1 = 0001
+0 = 0000
+
+0001 + 0011 = 0100
+0000 + 0011 = 0011
+
+10 in XS-3 is 0100 0011 
+
+** Gray Code
+
+Gray code is designed so that consecutive values differ by only one bit.
+
+Convert each digit to binary, then apply the Gray code rule.
+
+| Decimal | Binary (8421) | Gray Code | Bits Changed |
+|       0 |          0000 | 0 0 0 0   |            - |
+|       1 |          0001 | 0 0 0 *1*   |            1 |
+|       2 |          0010 | 0 0 *1* 1   |            1 |
+|       3 |          0011 | 0 0 1 *0*   |            1 |
+|       4 |          0100 | 0 *1* 1 0   |            1 |
+|       5 |          0101 | 0 1 1 *1*   |            1 |
+|       6 |          0110 | 0 1 *0* 1   |            1 |
+|       7 |          0111 | 0 1 0 *0*   |            1 |
+|       8 |          1000 | *1* 1 0 0   |            1 |
+|       9 |          1001 | 1 1 0 *1*   |            1 |
+
+
+** Biquinary
+
+7 bits per digit then spilt as 2 bits | 5 bits.
+
+The first 2 bits: 01 if the digits is 0-4.
+The first 2 bits: 10 if digits is 5-9.
+
+The last 5 bits: 
+
+------------
+
+* Parity Checks
+
+Explained in GEMATMW.
+
+Parity bits are for error detection. Strings of binaries are sent between sender and receiver.
+
+Sender and receiver must agree on a rule beforehand about the strings sent.
+
+The rule is whether the total count of *1-bits* exists.
+
+If the agreed-upon rule is *even parity*, the total number of *1s* must be even.
+If the agreed-upon rule is *odd parity*, the total number of *1s* must be odd.
+
+If strings are not even or odd, add a 1-bit to the string to correct it.
+The added bit is usually to the front (leftmost part of the string), but that's just convention.
+
+Add a *0* to signal the string complies with the rule. 
+
+
+A major limitation is that it only catches errors where only 1 bit is flipped.
+
+* Data Point
+** Signed vs Unsigned
+
+**  Packed BCD
+
+** Floating Point
+
+
+---------
+
+* Boolean ALgebra
+
+** Consensus Theorem
+
+\[
+xy + xz + yz = xy + xz
+\]
+
+Consensus in /x/.
+
+\[
+XAB + XC + ABC XAB + XC
+\]
+
+
+
+7) (A+C+D)(A+C+D)(A+C+D)(A+B)
+
+   _Recall_: x + yz = (x + y) (x + z)
+
+   Let v = A + C
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

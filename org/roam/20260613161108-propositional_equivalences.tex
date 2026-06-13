@@ -1,0 +1,133 @@
+% Created 2026-06-13 Sat 19:39
+% Intended LaTeX compiler: xelatex
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{microtype}
+\setlength{\parskip}{0.8em}
+\setlength{\parindent}{0pt}
+\usepackage{mathpazo}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+\usepackage{enumitem}
+\setlist{noitemsep,topsep=4pt}
+\usepackage{titling}
+\pretitle{\begin{center}\large\bfseries}
+\posttitle{\end{center}}
+\author{tyrone}
+\date{\today}
+\title{Propositional Equivalences}
+\hypersetup{
+ pdfauthor={tyrone},
+ pdftitle={Propositional Equivalences},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 30.2 (Org mode 9.7.11)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\section{Key Propositional Equivalences}
+\label{sec:org24c8cf6}
+
+
+\subsection{Identity Laws}
+\label{sec:org9be9fad}
+
+\[
+p  \land \text{ true } \equiv p
+\]
+
+\[
+p \lor false \equiv p 
+\]
+\subsection{Domination Laws}
+\label{sec:org045f6e9}
+
+\[
+p \lor \text{ true } \equiv \text{ true }
+\]
+
+\[
+p \land false \equiv \text{ false }
+\]
+\subsection{Double Negation Law}
+\label{sec:org1ba0647}
+
+\[
+\neg(\neg p) \equiv p
+\]
+\subsection{Commutative Laws}
+\label{sec:org25b139d}
+
+\[
+p \lor q \equiv q \lor p
+\]
+
+\[
+p \land q \equiv q \land p
+\]
+\subsection{Idempotent Laws}
+\label{sec:org42dd65a}
+
+\[
+p \lor p \equiv p
+\]
+
+\[
+p \land p \equiv p
+\]
+\subsection{Distributive Laws}
+\label{sec:orge2fc5c1}
+
+\[
+p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)
+\]
+
+\[
+p \land (q \lor r) \equiv (p \land q) \lor (p \land r)
+\]
+\subsection{De Morgan's Laws}
+\label{sec:org63ae5f7}
+
+\[
+\neg( p \land q) \equiv \neg p \lor \neg q
+\]
+
+\[
+\neg(p \lor q) \equiv \neg p \land \neg q
+\]
+\subsection{Absorption Laws}
+\label{sec:org9719a78}
+
+\[
+p \lor (p \land q) \equiv p
+\]
+
+\[
+p \land (p \lor q) \equiv p
+\]
+\subsection{Negation Laws}
+\label{sec:org2da39c2}
+
+\[
+p \lor \neg p \equiv \text{ true }
+\]
+
+\[
+p \land \neg p \equiv \text{false}
+\]
+
+
+
+
+See \href{20260613123317-rules_of_inference.org}{Rules of Inference} for more details.
+\end{document}

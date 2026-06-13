@@ -1,0 +1,102 @@
+% Created 2026-06-13 Sat 14:03
+% Intended LaTeX compiler: xelatex
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{microtype}
+\setlength{\parskip}{0.8em}
+\setlength{\parindent}{0pt}
+\usepackage{mathpazo}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+\usepackage{enumitem}
+\setlist{noitemsep,topsep=4pt}
+\usepackage{titling}
+\pretitle{\begin{center}\large\bfseries}
+\posttitle{\end{center}}
+\author{Tyrone}
+\date{\today}
+\title{Rules of Inference}
+\hypersetup{
+ pdfauthor={Tyrone},
+ pdftitle={Rules of Inference},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 30.2 (Org mode 9.7.11)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{enumerate}
+\item \textbf{Modus Ponens} (Law of Detachment)
+
+If a conditional statement is true and its condition is satisfied, the conclusion must be true.
+\[
+   \text{If } p \rightarrow q \text{ and } p, \text{ then } q
+   \]
+
+\item \textbf{Modus Tollens} (Law of Contrapositive)
+
+If a conditional statement is true, and its consequent is false, then its antecedent must also be false.
+\[
+   \text{If } p \rightarrow q \text{ and } \neg q, \text{ then } \neg p
+   \]
+
+\item \textbf{Hypothetical Syllogism}
+
+If two conditional statements are true, where the consequent of the first is the antecedent of the second, then a third conditional statement combining the antecedent of the first and the consequent of the second is also true.
+\[
+   \text{If } p \rightarrow q \text{ and } q \rightarrow r, \text{ then } p \rightarrow r
+   \]
+
+\item \textbf{Disjunctive Syllogism}
+If a disjunction is true, and of its parts is false, then the other part must be  true.
+
+\[
+   \text{If } p \lor q \text{ and } \neg p \text{, then } q
+   \]
+
+\item \textbf{Conjunction}
+
+If two statements are true, then their conjunction is also true.
+\[
+   \text{If } p \text{ and } q, \text{ then } p \land q
+   \]
+
+\item \textbf{Simplification}
+
+If a conjunction is true, then each of its conjuncts are also true.
+\[
+   \text{If } p \land q, \text{ then } p
+   \]
+
+\item \textbf{Addition}
+
+If a statement is true, then the disjunction of that statement with any other statement is also true.
+\[
+   \text{If } p, \text{ then } p \lor q
+   \]
+
+\item \textbf{Absorption}
+
+If a conditional statement is true, then the antecedent implies a conjunction of itself and the consequent.
+\[
+   \text{If } p \rightarrow q, \text{ then } p \rightarrow (p \land q)
+   \]
+
+\item \textbf{Resolution}
+
+If two disjunctions are true, and one containing proposition p while the other contains its negation \(\neg p\), then the disjunction of the remaining parts is true.
+\[
+   \text{If } p \lor q \text{ and } \neg p \lor r, \text{ then } q \lor r
+   \]
+\end{enumerate}
+\end{document}

@@ -1,0 +1,87 @@
+:PROPERTIES:
+:ID:       20260613160530
+:END:
+#+TITLE: Rules of Inference
+#+AUTHOR: Tyrone
+#+STARTUP: showall latexpreview
+#+LATEX_COMPILER: xelatex
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTION: [11pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amssymb,mathtools}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \setlength{\parskip}{0.8em}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+#+LATEX_HEADER: \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep,topsep=4pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \pretitle{\begin{center}\large\bfseries}
+#+LATEX_HEADER: \posttitle{\end{center}}
+#+OPTIONS: toc:nil num:t
+
+1. *Modus Ponens* (Law of Detachment)
+   
+   If a conditional statement is true and its condition is satisfied, the conclusion must be true.
+   \[
+   \text{If } p \rightarrow q \text{ and } p, \text{ then } q
+   \]
+
+2. *Modus Tollens* (Law of Contrapositive)
+   
+   If a conditional statement is true, and its consequent is false, then its antecedent must also be false.
+   \[
+   \text{If } p \rightarrow q \text{ and } \neg q, \text{ then } \neg p
+   \]
+
+3. *Hypothetical Syllogism*
+   
+   If two conditional statements are true, where the consequent of the first is the antecedent of the second, then a third conditional statement combining the antecedent of the first and the consequent of the second is also true.
+   \[
+   \text{If } p \rightarrow q \text{ and } q \rightarrow r, \text{ then } p \rightarrow r
+   \]
+
+4. *Disjunctive Syllogism*
+   If a disjunction is true, and of its parts is false, then the other part must be  true.
+
+   \[
+   \text{If } p \lor q \text{ and } \neg p \text{, then } q
+   \]
+
+5. *Conjunction*
+   
+   If two statements are true, then their conjunction is also true.
+   \[
+   \text{If } p \text{ and } q, \text{ then } p \land q
+   \]
+
+6. *Simplification*
+   
+   If a conjunction is true, then each of its conjuncts are also true.
+   \[
+   \text{If } p \land q, \text{ then } p
+   \]
+
+7. *Addition*
+   
+   If a statement is true, then the disjunction of that statement with any other statement is also true.
+   \[
+   \text{If } p, \text{ then } p \lor q
+   \]
+
+8. *Absorption*
+   
+   If a conditional statement is true, then the antecedent implies a conjunction of itself and the consequent.
+   \[
+   \text{If } p \rightarrow q, \text{ then } p \rightarrow (p \land q)
+   \]
+
+9. *Resolution*
+   
+   If two disjunctions are true, and one containing proposition p while the other contains its negation $\neg p$, then the disjunction of the remaining parts is true.
+   \[
+   \text{If } p \lor q \text{ and } \neg p \lor r, \text{ then } q \lor r
+   \]
