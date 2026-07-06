@@ -1,0 +1,72 @@
+:PROPERTIES:
+:ID:       5de9003a-31ba-45a8-b6e0-10597aff77c1
+:END:
+#+TITLE: Transformers
+#+AUTHOR: tyrone
+#+STARTUP: showall latexpreview
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_CLASS_OPTION: [11pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amssymb,mathtools}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \setlength{\parskip}{0.8em}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+#+LATEX_HEADER: \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep,topsep=4pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \pretitle{\begin{center}\large\bfseries}
+#+LATEX_HEADER: \posttitle{\end{center}}
+#+OPTIONS: toc:nil num:t
+
+#+FILETAGS: :circuit_physics:components:
+
+* Transformers
+
+The purpose of transformers are to adjust the level of the inputted AC signal to the desired size with little to no power loss.
+
+There are two types of transformers: *step-up* and *step-down*.
+
+_Step-up transformers_ can increase the voltage while proportionally decreasing current.
+
+_Step-down transformers_ can increase current while proportionally increasing voltage.
+
+Physically, a transformer is a magnetic coil wounded by two coils. The coils would be electrically isolated but energy can still be transferred between them due to their magnetic fields  being coupled together.
+
+The AC source is connected to the *primary side*.
+
+The transformer outputs the altered signal on the *secondary side*.
+
+* Equations
+
+N_{p} is the number of turns on the primary winding. That is the where the input signal is being channeled to.
+
+N_{s} is the number of turns on the secondary winding. This is where the output signal is being channeled from.
+
+V_{p} is the voltage of the primary side.
+
+V_{s} is the voltage of the secondary side.
+
+I_{p} is the current of the primary side.
+
+I_{s} is the current of the secondary side.
+
+
+\begin{align}
+P_{p} &= P_{s} \\
+V_{p} \cdot I_{p} &= V_{s} \cdot I_{s}  \\
+\frac{V_{p}}{V_{s}}  &= \frac{I_{s}}{I_{p}} \\
+\frac{V_{p}}{V_{s}}  &= \frac{I_{s}}{I_{p}} = \frac{N_{p}}{N_{s}} = \alpha 
+\end{align}
+
+
+\alpha is the ratio between primary and secondary windings.
+
+If \alpha > 1, then V_{s} < V_{p} \rightarrow *Step-Down Transformer*
+
+If \alpha < 1, then V_{s} > V_{p} \rightarrow *Step-Up Transformer*
+

@@ -1,0 +1,80 @@
+:PROPERTIES:
+:ID:       c4c2fa27-b05b-4cf3-bdc5-c6c7e03959a9
+:END:
+#+TITLE: Encoder & Decoder
+#+AUTHOR: Tyrone
+#+STARTUP: showall latexpreview
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_CLASS_OPTION: [11pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amssymb,mathtools}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \setlength{\parskip}{0.8em}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+#+LATEX_HEADER: \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep,topsep=4pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \pretitle{\begin{center}\large\bfseries}
+#+LATEX_HEADER: \posttitle{\end{center}}
+#+OPTIONS: toc:nil num:t
+
+#+FILETAGS: :logic_gates:
+
+* Overview
+
+*Encoders* and *Decoders* are digital circuits that convert data from one binary format to another.
+
+They are the exact opposites of [[id:843671bf-29ec-43ea-99f3-04e230419e8d][Multiplexers]]. While multiplexers route data, encoders & decoders transform how information is represented.
+
+* Decoder
+
+A *decoder* takes a highly compressed binary code and expands it into individual active lines.
+
+It has n input lines and 2^{n} output lines.
+
+If you input a binary number into a decoder, only one corresponding output line will turn *ON*. While all other output lines stay *OFF*
+
+** Example: 2-to-4 Decoder
+
+A 2-to-4 decoder has 2 inputs (A, B) and 4 outputs (Y_{0} , Y_{1} , Y_{2}, Y_{3}).
+
+| A | B | Active Output |
+| 0 | 0 | Y_{0}            |
+| 0 | 1 | Y_{1}            |
+| 1 | 0 | Y_{2}            |
+| 1 | 1 | Y_{3}            |
+
+
+** Priority Encoder
+
+If two input lines are activated at once, a normal encoder breaks down. This is what *Priority Encoders* are built for: multiple, simultaneous inputs.
+
+If a Higher Priority Input is activated, the lower priority inputs are transformed into Don't Cares. 
+
+* Encoder
+
+An *encoder* does the inverse of a decoder. It takes multiple individual input lines and compresses them into a smaller binary code.
+
+It has 2^{n} input lines and n output lines.
+
+When you activate one of the input lines, the circuit outputs the unique binary number assigned to that line.
+
+** Example : 4-to-2 Encoder
+
+A 4-to-2 encoder has 4 inputs (D_{0}, D_{1}, D_{2}, D_{3}) and 2 binary outputs (A, B).
+
+| Active Input Line | A | B |
+| D_{0}                | 0 | 0 |
+| D_{1}                | 0 | 1 |
+| D_{2}                | 1 | 0 |
+| D_{3}                | 1 | 1 |
+
+
+* Related Concepts
+
+[[id:843671bf-29ec-43ea-99f3-04e230419e8d][Multiplexers]]

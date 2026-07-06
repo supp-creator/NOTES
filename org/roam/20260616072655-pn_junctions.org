@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       0abcd92d-5a42-42d7-b286-7aa1d481abce
+:END:
+#+TITLE: PN Junctions
+#+AUTHOR: tyrone
+#+STARTUP: showall latexpreview
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_CLASS_OPTION: [11pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amssymb,mathtools}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \setlength{\parskip}{0.8em}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+#+LATEX_HEADER: \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep,topsep=4pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \pretitle{\begin{center}\large\bfseries}
+#+LATEX_HEADER: \posttitle{\end{center}}
+#+OPTIONS: toc:nil num:t
+
+#+FILETAGS: :circuit_physics:
+
+* Junctions
+
+When joining  _P-Type_ and  _N-Type_ [[id:4f19076c-8cc8-4728-b9da-4985c5d14e26][Semiconductors]] together, the electrons and the holes recombine at the boundary.
+
+But the electrons leaving the N-type semiconductor also leaves behind *positively charged* donor atoms that cannot be moved.
+
+An *electric field* is subsequently generated near the boundary between the positively charged and the negatively charged atoms.
+
+The free electrons and free holes at the boundary recombined and this *depleted the region* of mobile carriers.
+
+This creates an *insulating barrier* between each semiconductor.
+
+The electric field forms from the N-side to the P-side. The field pushes electrons back to the N side and the holes back to the P-side.
+
+This continues until the diffusion stops and *equilibrium* is reached.
+

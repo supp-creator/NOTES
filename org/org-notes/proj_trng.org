@@ -1,0 +1,9 @@
+#+TITLE: True Random Number Generator based on ambient noise
+#+AUTHOR: Tyrone
+#+OPTIONS: toc:nil
+
+
+
+* Overview
+
+This outlines a possible project for LBYEC2B. If accepted, the project can be implemented as a Matlab program (.m). The program would utilize Matlab's built-in functions to process a convert a raw audio file into binary integers. The 

@@ -1,0 +1,98 @@
+:PROPERTIES:
+:ID:       e17b6ed1-8ed5-4c9e-a6ee-b772d5435944
+:END:
+#+TITLE: Normal Curve
+#+AUTHOR: Tyrone
+#+STARTUP: showall latexpreview
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_CLASS_OPTION: [11pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amssymb,mathtools}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \setlength{\parskip}{0.8em}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+#+LATEX_HEADER: \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep,topsep=4pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \pretitle{\begin{center}\large\bfseries}
+#+LATEX_HEADER: \posttitle{\end{center}}
+#+OPTIONS: toc:nil num:t
+
+#+FILETAGS:  :statistics:
+
+
+* Overview
+
+A *normal curve*, also known as a bell curve, is define by main two parameters: the mean (\mu) and the standard deviation (\sigma).
+
+The *mean* dictates the location of the curve. It marks the exact center, peak, and the line of symmetry. Changing the mean shifts the entire curve to the left or right along the horizontal axis. But does not alter the curve's shape.
+
+The *standard deviation* dictates the shape and spread of the curve. It measures how spread out the data points are from the center.
+
+By the way, standard deviation is a measure of how far, on average, individual data points are from the mean.
+
+A small \sigma creates a tall, narrow, and steep curve because the data is concentrated around the average.
+
+A large \sigma creates a short, wide, and flat curve because the data is highly spread out.
+
+
+* Empirical Rule
+
+Every true normal curve follows the Empirical Rule.
+
+The rule dictates exactly how much data falls within specific standard deviation intervals from the center:
+
+- 68.2% of all data points fall within \plusmn 1 standard deviation (\mu \plusmn \sigma)
+- 95.4% of all data points fall within \plusmn 2 standard deviations (\mu \plusmn 2\sigma)
+- 99.7% of all data points fall within \plusmn 3 standard deviations (\mu \plusmn 3\sigma)
+
+
+This rule is also known as the *68-95-99.7 rule*. 
+
+
+* Special Case: The Standard Normal Curve
+
+When you normalize a dataset, it is converted into a *Standard Normal Curve*.
+
+In this specific curve, *mean is always 0* and *standard deviation is always 1*.
+
+
+* Normal Curve Parameters
+
+
+
+| Metric             | Population Parameter | Sample Parameter |
+| Mean (Average)     | \mu                    | X'               |
+| Standard Deviation | \sigma                    | /s/ or SD          |
+| Variance           | \sigma^{2}                   | s^{2}               |
+| Size               | N                    | n                |
+
+
+* Standard Deviations
+
+For population standard deviation (\sigma):
+
+\[
+\sigma = \sqrt{\frac{\Sigma(x - \mu)^{2}}{N}}
+\]
+
+
+The calculation for standard deviation changes depending on the dataset scope.
+
+When calculating the sample standard deviation (/s/) :
+
+\[
+s = \sqrt{\frac{\Sigma(x-\bar{x})^{2}}{n-1}}
+\]
+
+
+* Related Concepts
+
+[[id:1fb8f03f-2c52-4fa1-81cd-07f64708e2f9][Central Limit Theorem]]
+
+[[id:cc1102bb-d2bf-41f1-8b58-bbc760cb4078][Z-values]]

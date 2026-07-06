@@ -1,0 +1,65 @@
+:PROPERTIES:
+:ID:       a53ef3c6-aa83-46bb-b591-85595434ea82
+:END:
+#+TITLE: T-table
+#+AUTHOR: Tyrone
+#+STARTUP: showall latexpreview
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_CLASS_OPTION: [11pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amssymb,mathtools}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \setlength{\parskip}{0.8em}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+#+LATEX_HEADER: \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep,topsep=4pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \pretitle{\begin{center}\large\bfseries}
+#+LATEX_HEADER: \posttitle{\end{center}}
+#+OPTIONS: toc:nil num:t
+
+#+FILETAGS: :statistics:
+
+* Overview
+
+Use a *T-Table* to look up the probability percentage on the outer edges to find the critical T-value inside the chart.
+
+Use this instead of a Z-table when n < 30.
+
+* Degrees of Freedom (/d f/)
+
+\[
+d f = n - 1
+\]
+
+Where n is the sample size.
+
+* Using a T-table
+
+Choose your tail and alpha level (\alpha).
+
+Alpha (\alpha) is the significance threshold, usually 0.05 (5%) or 0.01 (1%).
+
+One-tailed vs two-tailed tests directional change. If it is greater or if there is any change at all.
+
+
+After each metric is chosen, look up the value in all their intersections on the table. That is the *critical T-value*.
+
+
+* Interpretation
+
+Whether the T-value is positive, negative, or zero has the same interpretation as if a Z-value is positive, negative, or zero.
+
+That is above average, below average, or exactly average, respectively.
+
+* Related Concepts
+
+[[id:cc1102bb-d2bf-41f1-8b58-bbc760cb4078][Z-values]]
+
+
+

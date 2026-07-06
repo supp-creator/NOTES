@@ -1,0 +1,79 @@
+:PROPERTIES:
+:ID:       4f19076c-8cc8-4728-b9da-4985c5d14e26
+:END:
+#+TITLE: Semiconductors
+#+AUTHOR: tyrone
+#+STARTUP: showall latexpreview
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_CLASS_OPTION: [11pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amssymb,mathtools}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \setlength{\parskip}{0.8em}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+#+LATEX_HEADER: \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep,topsep=4pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \pretitle{\begin{center}\large\bfseries}
+#+LATEX_HEADER: \posttitle{\end{center}}
+#+OPTIONS: toc:nil num:t
+
+#+FILETAGS: :circuit_physics:
+
+* Charge Carriers
+
+There are two types of charge carriers: *electrons* and *holes*.
+
+_Electrons_ are particles that carry negative charge.
+
+_Holes_ are behavior from when electrons leave their atoms' energy bands. The lack of an electron (*negative charge*) leads to a 'hole' that behaves like it carries *positive charge*.
+
+The number of charge carriers must always stay constant. But there can be varying concentrations of electrons and holes.
+
+** Doping
+
+Doping is the process of altering the number of electrons and holes a material has. 
+
+There are two types of doping: *N-type* and *P-type*.
+
+_P-type_ doping is to *increase* the number of *holes* in a material. This can be done by adding elements to the material that contain 3 valence electrons. Elements typically used are boron and aluminum.
+
+These elements are called *trivalent impurities*. They are introduced to produce more hole carriers; creating P-type semiconductors.
+
+_N-type_ doping is to *increase* the number of *electrons* in a material. This can be done by adding elements to the material that contain 5 valence electrons. Elements typically used are phosphorus and arsenic.
+
+These elements are called *pentavalent impurities*. They are introduced to increase electron carriers; creating N-type semiconductors.
+
+Doping is done to allow people to precisely control the conductivity of semiconductors. 
+
+* Semiconductors
+
+Semiconductors are materials that have the properties of both insulators and conductors. This is possible mainly due to *charge carriers*.
+
+Semiconductors also gain increased conductivity when heated up. This is the opposite behavior of regular conductors. Regular conductors become more conductive when they are cooled down.
+
+Conductors also become more inductive when heated up.
+
+There are two types of semiconductors: *intrinsic* and *extrinsic*.
+
+_Intrinsic semiconductors_ are pure crystals. They are composed entirely with only one element. All intrinsic semiconductors have an equal number of electrons and holes.
+
+_Extrinsic semiconductors_ are intentionally modified via doping. All extrinsic semiconductors are doped.
+
+At 0 K \deg , an intrinsic semiconductor acts as a *perfect insulator.*
+
+**  Types of Extrinsic Semiconductors
+
+There are two types of extrinsic semiconductors determined by the concentrations of holes and electrons they have.
+
+_P-type semiconductors_ have more holes than electrons. This makes holes the *majority carriers* and electrons the *minority carriers*.
+
+_N-type semiconductors_ have more electrons than holes. This makes electrons the *majority carriers* and holes the *minority carriers*.
+
+
+

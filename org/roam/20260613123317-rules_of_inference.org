@@ -54,6 +54,7 @@
 5. *Conjunction*
    
    If two statements are true, then their conjunction is also true.
+   
    \[
    \text{If } p \text{ and } q, \text{ then } p \land q
    \]
@@ -85,3 +86,7 @@
    \[
    \text{If } p \lor q \text{ and } \neg p \lor r, \text{ then } q \lor r
    \]
+
+
+See [[id:f2444e08-8105-4f1b-88e7-32786c372783][Propositional Equivalences]] for more details.
+

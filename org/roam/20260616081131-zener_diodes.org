@@ -1,0 +1,63 @@
+:PROPERTIES:
+:ID:       860f1d64-9a1a-4c18-a84a-277b7f85bc28
+:END:
+#+TITLE: Zener Diodes
+#+AUTHOR: tyrone
+#+STARTUP: showall latexpreview
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_CLASS_OPTION: [11pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amssymb,mathtools}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \setlength{\parskip}{0.8em}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+#+LATEX_HEADER: \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep,topsep=4pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \pretitle{\begin{center}\large\bfseries}
+#+LATEX_HEADER: \posttitle{\end{center}}
+#+OPTIONS: toc:nil num:t
+
+#+FILETAGS: :circuit_physics:components:
+
+* Zener Diodes
+
+A diode that operates in reverse bias at a specific breakdown voltage.
+
+Ideally, the diode should behave as a normal diode in both forward bias and reverse bias. But, if voltage applied causes breakdown, the diode will still work fine but hard limits the voltage applied to it. This voltage limit is called the *Zener Voltage* ( V_{Z} ).
+
+\begin{align}
+|V| < V_{z} \rightarrow \text{Open Circuit} \\
+|V| \ge V_{z} \rightarrow \text{Voltage fixed at } V_{z}
+\end{align}
+
+
+* Zener Diode Model
+
+Piece-wise & Linear.
+
+\begin{align}
+V &= V_z + I_z \cdot r_z \\ 
+I_z &= \frac{V - V_z}{r_z} \\
+V_z &= V - I_z \cdot r_z
+\end{align}
+
+
+* Zener Power Rating
+
+\[
+P_{z} = V_{z} \cdot I_{z}
+\]
+
+
+If P_{z} exceeds the diodes power rating, the diode burns.
+
+* Related Concepts
+
+[[id:c03618f7-f669-4046-9438-b6970bc5ffb7][Diodes]]
+

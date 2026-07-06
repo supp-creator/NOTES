@@ -1,0 +1,63 @@
+:PROPERTIES:
+:ID:       1fb8f03f-2c52-4fa1-81cd-07f64708e2f9
+:END:
+#+TITLE: Central Limit Theorem
+#+AUTHOR: tyrone
+#+STARTUP: showall latexpreview
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_CLASS_OPTION: [11pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amssymb,mathtools}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \setlength{\parskip}{0.8em}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+#+LATEX_HEADER: \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep,topsep=4pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \pretitle{\begin{center}\large\bfseries}
+#+LATEX_HEADER: \posttitle{\end{center}}
+#+OPTIONS: toc:nil num:t
+
+
+#+FILETAGS: :statistics:
+
+* Overview
+
+The *Central Limit Theorem* is the foundation of inferential statistics. It states that for a sufficiently large random sample from any population, the distribution of the sample means will form a normal distribution, regardless of the original population's shape.
+
+This happens typically at n \ge30.
+
+* Pillars of the Central Limit Theorem
+
+1. *The shape is normalized*.
+
+2. *The center stays the same*. The average of all the sample means (\mu_{X}) will equal the true underlying population mean (\mu).
+
+3. *The spread shrinks.* The variation among the sample means gets narrower. This spread is called the *Standard Error*.
+
+    \[
+    \text{Standard Error (SE) } = \frac{\sigma}{\sqrt{n}}
+    \]
+
+
+* Standard Error
+
+A measurement of how much your entire sample mean is expected to fluctuate if the study is repeated with different groups.
+
+A smaller SE means the sample is highly representative of the population.
+
+
+* Related Concepts
+
+[[id:e17b6ed1-8ed5-4c9e-a6ee-b772d5435944][Normal Curve]]
+
+[[id:cc1102bb-d2bf-41f1-8b58-bbc760cb4078][Z-values]]
+
+
+    
+    

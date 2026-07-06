@@ -1,0 +1,1292 @@
+% Created 2026-06-18 Thu 01:18
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{tyrone}
+\date{\today}
+\title{My Rust Notes}
+\hypersetup{
+ pdfauthor={tyrone},
+ pdftitle={My Rust Notes},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 30.2 (Org mode 9.7.11)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Flow Control}
+\label{sec:org9b47a65}
+\subsection{If-else statement}
+\label{sec:org01b0c37}
+
+if condition \{
+     code;
+\} else if condition2 \{
+     code;
+\} else \{
+     code;
+\}
+
+\begin{verbatim}
+
+fn main() {
+  let x = 10;
+  if x == 0 {
+      println!("zero");
+  } else if x < 100 {
+     println!("less than 100");
+  } else {
+     println!("more than 100");
+  }
+  }
+
+\end{verbatim}
+
+An if statement may also be used as an expression.
+
+\begin{verbatim}
+
+  fn main() {
+
+  let x = 10;
+  let size = if x < 20 { "small" } else { "large" };
+  println!("number size: {}", size);
+ }
+
+
+\end{verbatim}
+\subsection{match Expressions}
+\label{sec:org4489108}
+
+match value \{
+    value1 => code,
+    value2 => code,
+    value3 => code,
+    \_ => \{
+        default,
+        \}
+    \}
+
+
+\begin{verbatim}
+
+  fn main() {
+      let flag = true;
+      let val = match flag {
+  	true => 1,
+  	false => 0,
+      };
+
+   println!("The value of {flag} is {val}.");
+   }
+
+\end{verbatim}
+
+\begin{verbatim}
+   #[rustfmt::skip]
+   fn main() {
+
+       let input = 'x';
+       match input {
+   	'q'                         => println!("Quitting"),
+   	'a' | 's' | 'w' | 'd'       => println!("Moving around"),
+   	'0'..='9'                   => println!("Number input"),
+   	key if key.is_lowercase()   => println!("Lowercase: {key}"),
+   	_                           => println!("Something else"),
+       }
+   }
+
+
+
+\end{verbatim}
+
+As you may see, \textbf{'|'} may be used as an \textbf{OR}.
+
+\textbf{..} matches any number of items.
+
+1..=5 is used to represent a range.
+
+\_ is a wild card.
+\subsection{Loops}
+\label{sec:org52e51b7}
+\subsubsection{While loops}
+\label{sec:org8caec17}
+
+while condition \{
+     code;
+ \}
+
+\begin{verbatim}
+
+   fn main() {
+       let mut x = 0;
+
+       while x < 10 {
+   	dbg!(10);  	
+   }
+ }
+
+\end{verbatim}
+\begin{enumerate}
+\item \emph{while let} patters
+\label{sec:orgca5d977}
+This allows binding new variables into scope when the pattern matches.
+\end{enumerate}
+\subsubsection{For loops}
+\label{sec:orgbdc0420}
+
+for x in firstValue..lastValue \{
+     code;
+ \}
+
+\begin{verbatim}
+   fn main() {
+       for x in 1..5 {
+   	dbg!(x);
+       }
+
+       for elem in [2, 4, 8, 16, 32] {
+   	dbg!(elem);
+       }
+   }
+\end{verbatim}
+\subsubsection{loop}
+\label{sec:org2062c16}
+
+The loop statement just runs forever until it hits a break.
+
+loop \{
+  code;
+  \}
+
+\begin{verbatim}
+
+  fn main() {
+      let mut i = 0;
+
+      loop {
+  	dbg!(i);
+  	i += 1;
+  	if i == 10 {
+  	    break;
+  	}
+      }
+  }
+
+\end{verbatim}
+\section{Macros and \#[Derive]}
+\label{sec:org98ce3ac}
+
+Macros are expanded during compilation into Rust code. The are indicated by a \textbf{!} at the end.
+Functionally, they are code that writes other code. Which is knwon as \uline{metaprogramming}.
+
+\emph{\#[derive]} is used to implement traits for structs and enums. Traits such as \textbf{Debug}, \textbf{Clone}, \textbf{Copy}, \textbf{PartialEq}, \textbf{Eq}, \textbf{Hash}, \textbf{Default}, and stuff like that.
+These traits are already built-in or imported.
+
+\begin{verbatim}
+
+  #[derive(Debug, Clone, PartialEq)]
+  struct Point {
+      x: f64,
+      y: f64,
+  }
+
+  fn main() {
+      let p = Point { x: 1.0, y: 2.0 };
+      println!("{:?}", p);
+    }
+
+\end{verbatim}
+
+\emph{\#[derive(Debug)]} allows you to print a value with \emph{\{:?\}} or \emph{\{:\#?\}}. Use this with \emph{println!}.
+
+\emph{\#[derive(Clone, Copy)]} allows you to explicitly duplicate value using \emph{.clone()} and then copy it somewhere else.
+
+\begin{verbatim}
+  #[derive(Clone, Copy)]
+  struct Point {
+      x: f64,
+      y: f64,
+  }
+
+  fn main() {
+
+      let a = Point { x: 1.0, y: 2.0 };
+      let b = a;  // b copies a, not moved. This means a is still valid
+      let c = a.clone(); // cloned
+  }
+
+\end{verbatim}
+
+The trait \emph{PartialEq} let's you compare using \textbf{==} and \textbf{!=}.
+The trait \emph{Eq} requires \emph{PartialEq} and signals that equality is total ( every value equals itself ).
+FLoats cannot implement \emph{Eq} due to \emph{NaN != NaN}.
+
+\begin{center}
+\begin{tabular}{ll}
+\textbf{Macros} & \textbf{Function}\\
+println!("Hello, \{\}!", name); & Prints with a newline\\
+print!("no newline"); & Prints without a newline\\
+eprintln!("error: \{\}", message) & Prints to stderr\\
+format!("hello \{\}", name); & Returns a String instead of printing\\
+panic!("something went wrong"); & Immediately crashes with a message\\
+todo!() & Marks unfinished code, panics if reached\\
+dbg!() & prints file/line/value then returns the value\\
+unreachable!() & Tells the compiler this point can't be reached\\
+unimplemented!() & Essentially the same with todo!()\\
+concat!("hello", " ", "world"); & Concatenates strings at compile time\\
+file!() & The current filename as \&str\\
+vec!([1, 2, 3]); & Creates a vector\\
+matches!(val1, val2); & Returns a bool depending on pattern match\\
+assert\textsubscript{eq}!(val1, val2); & Panics if not equal\\
+assert\textsubscript{ne}!(val1, val2); & Panics if equal\\
+\end{tabular}
+\end{center}
+\section{User Defined Structures}
+\label{sec:orgca27108}
+\subsection{Structs}
+\label{sec:org5bf9d12}
+Similar to the ones in C and C++. Can store multiple variables with different data types.
+Unlike in C++, there is no inheritance between structs.
+
+\begin{verbatim}
+
+  struct Person {
+      name: String,
+      age: u8,
+  }
+\end{verbatim}
+\subsubsection{Tuple Structs}
+\label{sec:orge27a025}
+If the names of the variables are unimportant, tuple structs are used instead.
+
+\begin{verbatim}
+
+  struct Coordinate(i32, i32);
+
+\end{verbatim}
+
+Used for single-field wrappers called newtypes.
+
+\begin{verbatim}
+
+  struct PoundsOfForce(f64);
+  struct Newtons(f64);
+
+  fn compute_force() -> PoundsOfForce {
+      //...
+  }
+
+  fn convert_force(force: PoundsOfForce) -> Newtons {
+      //...
+  }
+
+
+\end{verbatim}
+\subsection{Enums}
+\label{sec:org5e2698a}
+
+This defines one  type with a fixed set of possible values.
+
+\begin{verbatim}
+
+  #[derive(Debug)]
+  enum Direction {
+      Left,
+      Right,
+  }
+
+  #[derive(Debug)]
+  enum playerMove {
+      Pass,                          // Simple variant
+      Run(Direction),               // Tuple variant
+      Teleport { x:u32, y: u32 },  //Struct variant
+  }
+
+  fn main() {
+
+      let dir = Direction::Left;
+      let player_move: playerMove = playerMove::Run(dir);
+      println!("On this turn: {player_move:?}");
+  }
+
+
+\end{verbatim}
+
+\emph{Direction} is now a type with variants. The variants being \emph{Left} or \emph{Right}.
+\emph{Direction} has two values: \emph{Direction::Left} and \emph{Direction::Right}.
+\subsection{static}
+\label{sec:org423304e}
+
+Static variables will live during the whole execution of the program and cannot be moved.
+
+\begin{verbatim}
+
+  static MESSAGE: &str = "Hello, World.";
+
+  
+  fn main() {
+      println!("{MESSAGE}");
+  }
+
+\end{verbatim}
+\subsection{const}
+\label{sec:orgaf7248f}
+
+Constants are evaluated at compile time to generate const values. I think?
+
+\begin{verbatim}
+
+  const DIGEST_SIZE: usize = 3;
+  const FILL_VALUE: u8 = calculate_fill_value();
+
+  const fn calculate_fill_value() -> u8 {
+      if DIGEST_SIZE < 10 { 42 } else { 13 }
+  }
+
+  fn compute_digest(text: &str) -> [u8; DIGEST_SIZE] {
+      let mut digest = [FILL_VALUE; DIGEST_SIZE];
+
+      for (idx, &b) in text.as_bytes().iter().enumerate() {
+  	digest[idx % DIGEST_SIZE] = digest[idx % DIGEST_SIZE].wrapping_add(b);
+      }
+      digest
+  }
+
+  fn main() {
+      let digest = compute_digest("Hello");
+      println!("digest: {digest:?}");
+  }
+
+\end{verbatim}
+\section{References}
+\label{sec:orgaf4bb0b}
+
+You may have many shared references but only one exclusive reference.
+\subsection{Shared References}
+\label{sec:orge33f5f4}
+
+A reference is a way to access another value without taking ownership of the value. This is called 'borrowing'.
+Shared references are read-only, the data cannot be changed.
+
+\begin{verbatim}
+
+  fn main() {
+      let a = 'A';
+      let b = 'B';
+
+      let mut r: &char  = &a;
+      dbg!(r);
+
+      r = &b;
+      dbg!(r);
+  }
+
+
+\end{verbatim}
+
+A reference value is made with tehe \textbf{\&} operator. The \textbf{*} operator dereferences a reference.
+
+A shared reference to a type \emph{T} has the type \emph{\&T}.
+
+Rust can auto-dereference in many cases.
+
+\begin{verbatim}
+
+  let mut s = String::from("hello");
+  let c = &mut s;
+
+  c.push_str(" world"); // no * needed, Rust auto-derefs for method calls
+  println!("{}", s); // "hello world"
+
+
+\end{verbatim}
+\subsection{Exclusive References}
+\label{sec:org9cc2567}
+
+Exclusive references are known as mutable references. They allow you to change the value they are refering to.
+
+\begin{verbatim}
+
+  fn main() {
+
+      let mut point = (1, 2);
+      let x_coord = &mut point.0;
+      *x_coord = 20;
+      println!("point: {point:?}"); // Output=>  point: (20, 2)
+  }
+
+
+\end{verbatim}
+
+They have type \textbf{\&mut T}.
+
+Very similar to pointers. Create a variable and point it to the reference using \&mut.
+Then make changes to that variable using \textbf{\&mut} and the changes made to the new variable will reflect in the original variable.
+\section{Slices}
+\label{sec:org627c091}
+
+A slice let's you view into a larger collection.
+
+\begin{verbatim}
+
+  fn main() {
+
+      let a: [i32; 6] = [10, 20, 30, 40, 50, 60];
+      println!("a: {a:?}");
+
+      let s: &[i32] = &a[2..4];
+      println!("s: {s:?}");
+  }
+
+
+\end{verbatim}
+
+Slices borrow data.
+
+If the slice starts at index 0, you may drop the starting index so it will be \textbf{\&a[..a.len()]}
+
+The same is true for the last index, so \textbf{\&a[2..a.len()]} is the same as \textbf{\&a[2..]}.
+
+To make a slice of the full array, use \textbf{\&a[..]}
+
+You cannot append to a slice since it doesn't own the backing buffer.
+\section{Strings}
+\label{sec:orga5c0235}
+
+\textbf{\&str} is a slice of UTF-8 encoded bytes. This is a string slice, an immutable reference to UTF-8 encoded string data stored in a block of memory.
+\textbf{String} is an owned buffer of UTF-8 encoded bytes.
+
+\begin{verbatim}
+
+  fn main() {
+
+      let s1: &str = "World";
+
+      let mut s2: String = String::from("Hello ");
+ 
+      s2.push_str(s1);
+      println!("s2: {s2}"); //Outputs: Hello World
+
+      let s3: &str = &s2[2..9];
+      println!("s3: {s3}"); // Outputs: 'llo Wor'
+  }
+
+\end{verbatim}
+
+The String data type of Rust is a wrapper around a vector of bytes.
+
+\textbf{String::new()} creates a new, empty string to which data can be added using the \textbf{.push()} and \textbf{.push\textsubscript{str}()} methods.
+
+\textbf{String::from()} creates an owned, growable String from a literal string.
+
+\begin{verbatim}
+
+  let s1 = String::from("hello");
+
+  let s2 = "hello".to_string(); //same as s1
+  
+  let s3 = String::new() //empty string
+      
+\end{verbatim}
+
+The \textbf{.push()} method appends a single character (char).
+
+The \textbf{.push\textsubscript{str}()} method appends a string slice (\&str).
+
+\begin{verbatim}
+
+  let mut s = String::from("hello");
+
+  s.push('!'); // this is fine
+  s.push("!"); //this is &str, not char so this will lead to an error
+
+  s.push_str(" world"); 
+
+\end{verbatim}
+
+Other useful String methods
+
+\begin{verbatim}
+
+  let mut s = String::from("hello world");
+
+  s.contains("world");                   // outputs true
+  s.replaces("world", "rust");          // returns new String "hello rust"
+  s.to_uppercase();                    // "HELLO WORLD"
+  s.len();                            // 11 bytes since it uses 11 characters
+  s.is_empty();                      // outputs false
+  s.split(" ").collect::<Vec<_>>(); // ["hello", "world"]    
+
+\end{verbatim}
+\section{Reference Validity}
+\label{sec:org1ede5f0}
+
+In Rust, references are always safe to use due to certain rules.
+
+One of the rules is that references can never be null.
+
+References can't also outlive the data they point to.
+\section{Return}
+\label{sec:org307c403}
+
+The \textbf{return} command does exists but is generally only used early in the program.
+
+Just type the variable you want the program to output at the end but don't end it with a semicolon.
+
+Rust will always return a value that doesn't end with semicolon.
+
+Unless you use the \textbf{return} keyword, then end with a semicolon.
+\section{Pattern Matching}
+\label{sec:org46af057}
+\subsection{Irrefutable Patterns}
+\label{sec:org793d36f}
+
+\begin{verbatim}
+  fn takes_tuple(tuple: (char, i32, bool)) {
+      
+      let a = tuple.0;
+      let b = tuple.1;
+      let c = tuple.2;
+
+      let (a, b, c) = tuple; //This does the same as the block above
+
+      let (_, b, c) = tuple; //Ignores the first element, binds only the second and third.
+
+      let (.., c) = tuple; //Ignores everthing but the last element
+  }
+
+  fn main() {
+      takes_tuple(('a', 777, false));
+  }
+
+
+\end{verbatim}
+
+Irrefutable means that the patters will always match the value on the RHS.
+
+Variable names are patterns that always match and bind the matched value into a new variable with that name.
+
+Patterns are type-specific.
+
+\textbf{\_} is a pattern that always matches any value, discarding the matched value.
+
+\textbf{..} allows you to ignore multiple values at once.
+\subsection{Destructuring Structs}
+\label{sec:org6b8e3af}
+
+\begin{verbatim}
+
+       struct Move {
+           delta: (i32, i32),
+           repeat: u32,
+       }
+
+       #[rustfmt::skip]
+       fn main() {
+           let m = Move { delta: (10, 0), repreat: 5};
+
+           match m {
+       	Move { delta: (0, 0), ..}         => println!("Standing still"),
+       	Move { delta: (x, 0), repeat }    => println!("{repeat} step x: {x}"),
+     	Move { delta: (0, y), repeat: 1 } => println!("Single step y: {y}"),
+  	  _                                 => println!("Other move"),   
+     }
+  }
+
+\end{verbatim}
+
+\textbf{x} and \textbf{y} aren't defined so running this code will just lead to a compile error.
+\subsection{Destructuring Enums}
+\label{sec:org67b98d9}
+
+You may wonder what even is destructuring.
+
+Destructuring is unpacking a data structure into its individual components in one field.
+
+\begin{verbatim}
+
+  //This is unpacking each value of the tuple one by one.
+  let point = (3.0, 4.0);
+  let x = point.0;
+  let y = point.1;
+  println!("{} {}", x, y);
+
+  //This is destructuring; just takes one line.
+  let point = (3.0, 4.0);
+  let (x, y) = point;
+  println!("{} {}", x, y);
+
+
+\end{verbatim}
+
+Anyway, back to Enums.
+
+\begin{verbatim}
+
+  enum Shape {
+      Circle(f64),
+      Rectangle(f64, f64),
+      Triangle { base: f64, height: f64 },
+  }
+
+  let shape = Shape::Circle(5.0);
+
+  match shape {
+      Shape::Circle(r) => println!("CIrcle with radius {}", r),
+      Shape::Rectangle(w, h) => println!("Rectangle {}x{}", w, h),
+      Shape::Triangle { base, height } => println!("Triangle base={} height={}", base, height),
+      _ => println!("Some other shape."),
+  }
+
+
+\end{verbatim}
+\subsection{Let Control Flow}
+\label{sec:org1950251}
+\subsubsection{if let expression}
+\label{sec:org47adb7f}
+
+This lets you execute different code depending on whether a value matches a pattern.
+
+\begin{verbatim}
+
+  use std::time::Duration;
+
+  fn sleep_for(secs: f32) {
+
+      let result = Duration::try_from_secs_f32(secs);
+
+      if let Ok(duration) = result {
+  	std::thread::sleep(duration);
+  	println!("slept for {duration:?}");
+      }
+  }
+
+  fn main() {
+      sleep_for(-10.0);
+      sleep_for(0.8);
+  }
+
+
+\end{verbatim}
+
+Unlike \textbf{match}, \textbf{if let} does not have to cover all branches.
+
+This is used to hanlde \textbf{Some} values when working with \textbf{Options}.
+
+Unlike \textbf{match}, \textbf{if let} does not support guard clauses for pattern matching.
+
+With an \textbf{else} clause, this can be used as an expression.
+\subsubsection{while let statements}
+\label{sec:org9ce7eb6}
+
+This repeatedly tests a value against a pattern.
+
+\begin{verbatim}
+
+  fn main() {
+
+      let mut name = String::from("Comprehensive Rust");
+
+      while let Some(c) = name.pop() {
+  	dbg!(c);
+      }
+  }
+
+
+\end{verbatim}
+
+In this weird ass example to print out each character of a string in reverse order, \textbf{String::pop} returns \textbf{Some(c) until the string is empty, after which it will return *None}.
+
+Wait, what the heck does \textbf{Some()} do?
+
+\textbf{Some()} is a varaint of the \textbf{Option} enum.
+
+\begin{verbatim}
+
+  enum Option<T> {
+      Some(T),   // there IS a value, and this is it
+      None,     // there is NO value
+      
+  }
+
+\end{verbatim}
+
+\textbf{T} can be any type: \textbf{Some(5)}, \textbf{Some("hello")}, \textbf{Some(Point\{\ldots{}\})}, and such.
+
+Rust has no \textbf{null}. If a value is absent, the type system will need you to handle it.
+
+\begin{verbatim}
+
+  fn find_user(id: u32) -> Option<String> {
+      if id == 1 {
+  	Some(String::from("Alice")) // found a value
+      } else {
+  	None // There really is no value 
+      }
+  }
+
+\end{verbatim}
+
+Anyway, \textbf{while let} loops will keep going so long as the value matches the pattern.
+
+This cannot be used as an expression because they may have no value if the condition is false.
+\subsubsection{let else statement}
+\label{sec:orgfa06b6c}
+
+If you're just matching a pattern and returning from the funtion, use \textbf{let else}.
+The \textbf{else} case must diverge into \textbf{return}, \textbf{break}, or \textbf{panic} - anything but falling off the end of the block.
+
+\begin{verbatim}
+
+  fn hex_or_die_trying(maybe_string:Option<String>) -> Result<u32, String> {
+      let Some(s) = maybe_string else {
+  	return Err(String::from("got None"));
+      };
+
+      let Some(first_byte_char) = s.chars().next() else {
+  	return Err(String::from("got empty string"));
+      };
+
+      let Some(digit) = first_byte_char.to_digit(16) else {
+  	return Err(String::from("not a hex digit"));
+      };
+
+      Ok(digit)
+  }
+
+
+\end{verbatim}
+
+
+
+So, \textbf{Result} is the same with \textbf{Option} but for error handling.
+
+\begin{verbatim}
+
+  enum Option<T> {
+      Some(T),
+      None,
+  }
+
+  enum Result<T, E> {
+      Ok(T),     // success, has a value 
+      Err(E),   // failure, has an error
+  }
+
+  fn divide(a: f64, b: f64) -> Result<f64, String> {
+      if b == 0.0 {
+  	Err(String::from("cannot divide by zero"))
+      } else {
+  	Ok(a / b)
+      }
+  }
+
+  match divide(10.0, 2.0) {
+      Ok(result) => println!("quotient: {}", result),
+      Err(e) => println!("oops: {}", e),
+  }
+
+
+\end{verbatim}
+
+\textbf{E} type can be anything: a string message, \textbf{io::Error}, \textbf{ParseError}.
+
+\begin{verbatim}
+
+  Result<f64, String>;  // If successful,  expect a float. Otherwise, a string.
+
+  Result<u32, io::Error>;
+
+  Result<(), ParseError>;   // T is () - success has no value, just that it 'works'
+  
+                  
+\end{verbatim}
+\section{Methods}
+\label{sec:org9abbf8b}
+
+\begin{verbatim}
+
+  // Copyright 2023 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+
+#[derive(Debug)]
+struct CarRace {
+    name: String,
+    laps: Vec<i32>,
+}
+
+impl CarRace {
+    // No receiver, a static method
+    fn new(name: &str) -> Self {
+        Self { name: String::from(name), laps: Vec::new() }
+    }
+
+    // Exclusive borrowed read-write access to self
+    fn add_lap(&mut self, lap: i32) {
+        self.laps.push(lap);
+    }
+
+    // Shared and read-only borrowed access to self
+    fn print_laps(&self) {
+        println!("Recorded {} laps for {}:", self.laps.len(), self.name);
+        for (idx, lap) in self.laps.iter().enumerate() {
+            println!("Lap {idx}: {lap} sec");
+        }
+    }
+
+    // Exclusive ownership of self (covered later)
+    fn finish(self) {
+        let total: i32 = self.laps.iter().sum();
+        println!("Race {} is finished, total lap time: {}", self.name, total);
+    }
+}
+
+fn main() {
+    let mut race = CarRace::new("Monaco Grand Prix");
+    race.add_lap(70);
+    race.add_lap(68);
+    race.print_laps();
+    race.add_lap(71);
+    race.print_laps();
+    race.finish();
+    // race.add_lap(42);
+}
+
+
+\end{verbatim}
+
+The \textbf{self} arguement specifies the object the method acts on (the 'receiver').
+
+It could be \textbf{\&self} which borrows the object from the caller using a shared and immutable reference. The object can be used again later.
+
+It could be \textbf{\&mut self} which borrows the object from the caller using a unique and mutable reference. The object can be used again later.
+
+It could be \textbf{self} which takes ownership of the object from the caller. The method becomes the new owner of the object. The object will be deallocated or 'dropped' when the method returns, unless ownership is explicitly transmitted.
+
+It could be \textbf{mut self} which is the same as above, taking new ownership, but the method can mutate the object.
+
+No receiver is also an option. This is usually used to create constructors that are called \textbf{new} by convention.
+
+Methods are called on an instance of a type such as a struct or enum. The first parameter represents the instance as \textbf{self}.
+
+\textbf{self}, the method receiver, is abbreviated for \textbf{self: Self}.
+
+\textbf{Self} is a type alias for the type tje \textbf{impl} blcok is in and can be used elsewhere within the block.
+
+\textbf{Basically, \emph{self} refers to the instance. \emph{Self} refers to the type.}
+\section{Traits}
+\label{sec:org4f21e3d}
+
+Traits are used to abstract over types, similar to interfaces.
+
+\begin{verbatim}
+
+  trait Pet {
+
+      fn talk(&self) -> String;
+
+      fn greet(&self);
+  }
+
+
+\end{verbatim}
+
+Traits defines a number of methods that types must have in order to implement the trait.
+\subsection{Implementing traits}
+\label{sec:orgbcd6c0f}
+
+\begin{verbatim}
+
+    trait Pet {
+        fn talk(&self) -> String;
+
+        fn greet(&self) {
+    	println!("Oh, what's your name? {}", self.talk());
+    	
+        }
+  }
+
+  struct Dog {
+      name: String,
+      age: i8,
+  }
+
+  impl Pet for Dog {
+      fn talk(&self) -> String {
+  	format!("Woof, my name is {}!", self.name)
+  	    
+      }
+   }
+
+  fn main() {
+      let fido = Dog { name: String::from("Fido"), age: 5 };
+      dbg!(fido.talk());
+      fido.greet();
+      
+  }
+
+
+
+\end{verbatim}
+
+To implement \textbf{Trait} for \textbf{Type}, use an \textbf{impl Trait} for \textbf{TYpe \{ .. \}} block.
+
+Unlike in Go interfaces, just having matching methods is not enough: a \textbf{Cat} type with a \textbf{talk()} method would not automatically satisfy \textbf{Pet}. Unless it is in an \textbf{impl Pet} block.
+\subsection{Supertraits}
+\label{sec:org504080d}
+
+A trait can require that types implementing it also implement othe traits, called \emph{supertraits}.
+
+\begin{verbatim}
+// Copyright 2024 Google LLC
+// SPDX-License-Identifier: Apache-2.0
+
+trait Animal {
+    fn leg_count(&self) -> u32;
+}
+
+trait Pet: Animal {
+    fn name(&self) -> String;
+}
+
+struct Dog(String);
+
+impl Animal for Dog {
+    fn leg_count(&self) -> u32 {
+        4
+    }
+}
+
+impl Pet for Dog {
+    fn name(&self) -> String {
+        self.0.clone()
+    }
+}
+
+fn main() {
+    let puppy = Dog(String::from("Rex"));
+    println!("{} has {} legs", puppy.name(), puppy.leg_count());
+}
+\end{verbatim}
+\subsection{Associated Types}
+\label{sec:org57b8282}
+
+These are placeholder types that are supplied by the trait implementation.
+
+\begin{verbatim}
+
+     #[derive(Debug)]
+     struct Meters(i32);
+
+     #[derive(Debug)]
+     struct MetersSquared(i32);
+
+     trait Multiply {
+
+         type Output = MetersSquared;
+
+    	fn multiply(&self, other: &Self) -> Self::Output;
+    }
+
+    impl Multiply for Meters {
+        type Output = MetersSquared;
+
+        fn multiply(&self, other: &Self) -> Self::Output {
+    	MetersSquared(self.0 * other.0)
+    	    
+        }
+  }
+
+  fn main() {
+      println!("{:?}", Meters(10).multiply(&Meters(20)));
+  }
+
+
+\end{verbatim}
+
+Associated types are sometimes called 'output types'.
+
+It is important to note that the implementer, not the caller, chooses this type.
+\section{Generics}
+\label{sec:org5c4677a}
+
+Generics lets you abstract algorithms or data structures over the types used or stores.
+
+\begin{verbatim}
+
+  fn pick<T>(cond: bool, left: T, right: T) -> T {
+      if cond { left } else { right }
+  }
+
+  fn main() {
+      println!("pick a number: {:?}", pick(true, 222, 333));
+      println!("pick a string: {:?}", pick(false, 'L', 'R'));
+  }
+
+
+\end{verbatim}
+
+This can be used for stuff like sorting or a binary tree.
+
+Genercis can reduce code duplication; letting you write code that works for any type.
+This is essentially what \textbf{Options<Some, None>} and \textbf{Result<Ok, Err>} are.
+\subsection{Generic Functions}
+\label{sec:orgf2abfc4}
+
+Instead of:
+
+\begin{verbatim}
+fn largest_i32(list: &[i32]) -> i32 {
+    let mut largest = list[0];
+    for &item in list {
+        if item > largest { largest = item; }
+    }
+    largest
+}
+
+fn largest_f64(list: &[f64]) -> f64 {
+    let mut largest = list[0];
+    for &item in list {
+        if item > largest { largest = item; }
+    }
+    largest
+}
+
+\end{verbatim}
+
+You can just:
+
+\begin{verbatim}
+
+  fn largest<T: PartialOrd>(list: &[T]) -> T {
+      let mut largest = list[0];
+      for &item in list {
+  	if item = largest { largest = item }
+      }
+      largest
+  }
+
+
+  largest(&[1, 2, 3, 4]);  //i32
+  largest(&[1.0, 2.0, 3.0, 4.0]); //f64
+
+\end{verbatim}
+\subsection{Generic structs}
+\label{sec:org511fa53}
+
+This is what \textbf{Option} and \textbf{Result} are.
+
+\begin{verbatim}
+
+  struct Wrapper<T> {
+      value: T,
+  }
+
+  let w1 = Wrapper { value: 42 };
+  let w2 = Wrapper { value: "hello" };
+  let w3 = Wrapper { value: 3.14 };
+
+\end{verbatim}
+\subsection{Generic Structs with impl}
+\label{sec:orgfab826a}
+
+\begin{verbatim}
+
+    struct Wrapper<T> {
+        value: T,
+    }
+
+    impl<T> Wrapper<T> {
+        fn new(value: T) - Self {
+    	Self { value }
+    }
+        fn get(&self) - &T {
+    	&self.value
+        }
+    }
+    
+
+
+\end{verbatim}
+\subsection{Trait bounds - constraining what T can be}
+\label{sec:org2b337e2}
+
+Without bounds, T could be anything. Trait bounds say "T must implement this trait"
+
+\begin{verbatim}
+  use std::fmt::Display;
+
+  // T must implement Display trait if it is to be printed
+  fn print_value<T: Display>(value: T) {
+      println!("{}", value);
+  }
+
+  // T must implement Display and Clone traits to use this function
+  fn print_and_clone<T: Display + Clone>(value: T) {
+      let copy = value.clone();
+      println!("{}", copy);
+  }
+
+
+
+\end{verbatim}
+
+\begin{center}
+\begin{tabular}{ll}
+Generics & Meaning\\
+<T> & placeholder for any type\\
+<T: Trait> & T must implement this trait\\
+<T: Trait + Trait> & T must imlplemnt these traits\\
+<T, U> & multiple type placeholders\\
+ & \\
+\end{tabular}
+\end{center}
+\section{Closures}
+\label{sec:orgea5a709}
+
+Anonymous functions that can store variables or be passed to other functions. It is enclosed in \textbf{| |}.
+
+\begin{verbatim}
+
+  fn add(a: i32, b: i32) -> i32 { a + b }
+
+  let add = | a, b| a + b;      // same as above.
+
+\end{verbatim}
+
+Regular functions can't use variables from the surrounding scope. But closures can.
+This is called \emph{capturing}. The closure "closes over" the variable.
+
+\begin{verbatim}
+
+  let x = 10;
+
+  let add_x = |n| n + x; // captures x from outside
+  println!("{}", add_x(5)); // outputs 15
+
+\end{verbatim}
+
+Closures can capture by \textbf{referencing \&T}, this is the default and just reads the value.
+
+\begin{verbatim}
+
+  let name = String::from("Alice");
+
+  let greet = || println!("hello {}", name); // borrows name variable
+
+  greet();
+  
+  println!("{}", name); // name still usable
+
+\end{verbatim}
+
+By mutable reference \textbf{\&mut T}:
+
+\begin{verbatim}
+
+  let mut count = 0;
+
+  let mut increment = || count += 1; //mutably borrows count
+
+  increment();
+
+  increment();
+
+  println!("{}", count); // outputs 2
+
+
+\end{verbatim}
+
+By ownership with \textbf{move}:
+
+\begin{verbatim}
+
+  let name = String::from("Alice");
+
+  let greet = move || println!("hello {}", name); // takes ownership of name
+
+  greet(); // name variable is gone. "Alice" has been moved into the closure.
+
+\end{verbatim}
+
+\uline{Examples}:
+
+\begin{verbatim}
+
+  let numbers = vec![1, 2, 3, 4, 5];
+
+  let doubled: Vec<i32> = numbers:iter()
+      .map(|n| n * 2)
+      .collect(); // [2, 4, 6, 8, 10]
+
+  let evens: Vec<i32> = numbers:iter()
+      .filter(|n| *n % 2 == 0)
+      .collect(); // [2, 4]
+
+  let first_even = numbers.iter()
+      .find(|n| *n % 2 == 0); // Some(2)
+
+  let sum = numbers.iter().fold(0, |acc, n| acc + n); // 15
+
+  let result: Vec<i32> = numbers.iter()
+      .filter(|n| *n % 2 ==0)
+      .map(|n| n * 10)
+      .collect(); // [20, 40]
+
+  // As a function argument
+
+  fn apply(f: impl Fn(i32) -> i32, value: i32) -> i32 {
+      f(value)
+  }
+
+  let double = |n| n * 2;
+
+  println!("{}", apply(double, 5)); // 10
+
+\end{verbatim}
+
+There are \textbf{three} traits for closure.
+
+\begin{center}
+\begin{tabular}{ll}
+Fn & borrows immutably, can be called many times.\\
+FnMut & borrows mutably, can be called many times.\\
+FnOnce & takes ownership, can only be called once.\\
+ & \\
+\end{tabular}
+\end{center}
+\section{Ownership}
+\label{sec:org1e3af42}
+
+Every variable in Rust has \textbf{exactly one owner at a time.}
+
+When the owner goes out of scope, the value is automatically dropped (freed).
+
+Ownership can be transferred, this is called a move.
+
+\begin{verbatim}
+
+  let s1 = String::from("hello");
+  let s2 = s1; // ownership of "hello" moves from s1 to s2.
+
+  println!("{}", s1); // Error since s1 no longer owns any value.
+
+  println!("{}", s2); // "hello"
+
+
+\end{verbatim}
+\end{document}

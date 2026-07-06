@@ -1,0 +1,111 @@
+:PROPERTIES:
+:ID:       cc1102bb-d2bf-41f1-8b58-bbc760cb4078
+:END:
+#+TITLE: Z-values
+#+AUTHOR: Tyrone
+#+STARTUP: showall latexpreview
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_CLASS_OPTION: [11pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amssymb,mathtools}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \setlength{\parskip}{0.8em}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+#+LATEX_HEADER: \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep,topsep=4pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \pretitle{\begin{center}\large\bfseries}
+#+LATEX_HEADER: \posttitle{\end{center}}
+
+#+OPTIONS: toc:nil num:t
+
+#+FILETAGS: :statistics:
+
+* Overview
+
+A *Z-value* measures how many standard deviations a specific data point is away from the mean.
+
+The *Z-table* is a reference chart that converts Z-values into a percentage, showing the exact area under the normal curve to find probabilities.
+
+A Z-value standardizes any normal distribution into a *Standard Normal Distribution* where the mean is always 0 and the standard deviation is always 1.
+
+
+*Positive Z-value* means that the data point is *above* the average.
+
+*Negative Z-value* means the data point is *below* the average.
+
+*Zero Z-value* means the data point is *exactly equal* to the average.
+
+
+In general:
+
+\[
+Z = \frac{\text{Target Value} - \text{Difference of Mean}}{\text{Standard Error}}
+\]
+
+
+** If n = 1:
+
+\[
+Z = \frac{X - \mu}{\sigma}
+\]
+
+
+** If a single sample group:
+
+\[
+Z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}
+\]
+
+Use this when you take one random sample of size /n/ and want to find the probability of that sample's average ($\bar{X}$).
+
+** Multiple Sample Groups (Two Independent Samples)
+
+\[
+Z = \frac{(\bar{X_{1}}-\bar{X_{2}})-(\mu_{1}-\mu_{2})}{\sqrt{\frac{\sigma_{1}^{2}}{n_{1}}+\frac{\sigma_{2}^{2}}{n_{2}}}}
+\]
+
+Use this when you are comparing the averages of two completely separate groups to see the probability of the difference between them ($\bar{X_{1}}-\bar{X_{2}}$).
+
+
+
+* Central Limit Theorem
+
+As the sample size grows, its distribution naturally becomes normal regardless of the shape of the underlying population.
+
+When sample size is large (n \ge 30), use the Z-table.
+
+If sample size is small (n < 30) but the population standard deviation (\sigma) is known and that the population is normally distributed, use the Z-table.
+
+
+* Using a Z-table
+
+First, calculate your Z-score.
+
+Which is X minus the mean and all that is divided by the standard deviation. Just make sure the final Z-Score is up to the hundredths place.
+
+Secondly, split the Z-Score between up to the tenths place and the hundredths place.
+
+The first two digits of the Z-Score is the row value while the last digit is the column number.
+
+** Interpretation
+
+The value you find:
+
+- To find the probability of scoring *less* than your value: keep the table value as-is.
+  
+- To find the probability of scoring *more* than your value: Subtract the table value from 1: (1 - Z) \cdot 100%
+  
+- To find the probability *between* two different Z-scores: look up both scores in the table individually and subtract the smaller percentage from the larger percentage.
+
+* Related Concepts
+
+[[id:e17b6ed1-8ed5-4c9e-a6ee-b772d5435944][Normal Curve]]
+
+[[id:1fb8f03f-2c52-4fa1-81cd-07f64708e2f9][Central Limit Theorem]]
+

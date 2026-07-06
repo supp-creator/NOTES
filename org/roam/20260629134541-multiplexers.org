@@ -1,0 +1,85 @@
+:PROPERTIES:
+:ID:       843671bf-29ec-43ea-99f3-04e230419e8d
+:END:
+#+TITLE: Multiplexers
+#+AUTHOR: Tyrone
+#+STARTUP: showall latexpreview
+#+LATEX_COMPILER: xelatex
+
+#+LATEX_CLASS_OPTION: [11pt]
+#+LATEX_HEADER: \usepackage[a4paper,margin=0.75in,top=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amssymb,mathtools}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \setlength{\parskip}{0.8em}
+#+LATEX_HEADER: \setlength{\parindent}{0pt}
+#+LATEX_HEADER: \usepackage{mathpazo}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+#+LATEX_HEADER: \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \setlist{noitemsep,topsep=4pt}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \pretitle{\begin{center}\large\bfseries}
+#+LATEX_HEADER: \posttitle{\end{center}}
+#+OPTIONS: toc:nil num:t
+
+#+FILETAGS: :logic_gates:
+
+* Overview
+
+A multiplexer (MUX) is a digital circuit that selects one input signal from multiple signals then forwards the selected input into a single output line.
+
+The circuit uses specific control lines called *select lines* to determine which data input is allowed to pass through to the output.
+
+The number of data inputs (n) and the number of select lines (S) are determined by:
+
+\[
+n = 2^{s}
+\]
+
+
+If the MUX has 2 select lines, then it can choose between 4 input channels. This is a *4-to-1 MUX*.
+
+If a MUX has 3 select lines, then it can choose between 8 input channels as 2^{3} = 8. This is called a *8-to-1 MUX*.
+
+
+* 2-to-1 Multiplexer
+
+The 2-to-1 MUX is the simplest multiplexer. It has two data inputs (I_{0}, I_{1}), one select line, and only one output.
+
+| Select Line | Output (Y) |
+|           0 | I_{0}         |
+|           1 | I_{1}         |
+
+
+This is described by the boolean equation:
+
+\[
+Y = ( S' \cdot I_{0} ) + (S \cdot I_{1})
+\]
+
+
+* 16-to-1 Multiplexer
+
+A 16-to-1 MUX has 16 data inputs (I_{0} to I_{15}) , 4 select lines (S_{3}, S_{2}, S_{1}, S_{0}), and 1 output (Y).
+
+
+| S_{3} | S_{2} | S_{1} | S_{0} | Output (Y) |
+|  0 |  0 |  0 |  0 | I_{0}         |
+|  0 |  0 |  0 |  1 | I_{1}         |
+|  0 |  0 |  1 |  0 | I_{2}         |
+|  0 |  0 |  1 |  1 | I_{3}         |
+|  0 |  1 |  0 |  0 | I_{4}         |
+|  0 |  1 |  0 |  1 | I_{5}         |
+|  0 |  1 |  1 |  0 | I_{6}         |
+|  0 |  1 |  1 |  1 | I_{7}         |
+|  1 |  0 |  0 |  0 | I_{8}         |
+|  1 |  0 |  0 |  1 | I_{9}         |
+|  1 |  0 |  1 |  0 | I_{10}        |
+|  1 |  0 |  1 |  1 | I_{11}        |
+|  1 |  1 |  0 |  0 | I_{12}        |
+|  1 |  1 |  0 |  1 | I_{13}        |
+|  1 |  1 |  1 |  0 | I_{14}        |
+|  1 |  1 |  1 |  1 | I_{15}        |
+
+
