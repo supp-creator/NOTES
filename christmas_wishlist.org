@@ -1,0 +1,284 @@
+#+TITLE: 2026 Christmas Wishlist
+#+AUTHOR: Tyrone
+#+OPTIONS: toc:t num:t date:nil
+
+
+#+LATEX_HEADER: \usepackage[a4paper,margon=0.75in,top=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{newpxtext}
+#+LATEX_HEADER: \usepackage{newpxmath}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\large\bfseries}{}{0em}{}[{\titlerule[0.5pt]}]
+#+LATEX_HEADER: \titleformat{\subsection}{\large\bfseries}{}{0em}{}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \setstretch{1.15}
+#+LATEX_HEADER: \setlist{noitemsep,topset=4pt}
+#+LATEX_HEADER: \pretitle{\begin{center}\bfseries}
+#+LATEX_HEADER: \posttitle{\end{center}\hr\vspace{1em}}
+
+#+LATEX_HEADER: \usepackage{float}
+#+LATEX_HEADER: \floatplacement{figure}{htbp}
+#+LATEX_HEADER: \floatplacement{table}{htpb}
+
+#+LATEX_HEADER: \setlength{\floatsep}{18pt plus 4pt minus 4pt}
+#+LATEX_HEADER: \setlength{\textfloatsep}{20pt plus 4pt minus 4pt}
+
+#+LATEX_HEADER: \usepackage{placeins}
+
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \usepackage{graphicx}
+
+#+LATEX_HEADER: \usepackage{caption}
+#+LATEX_HEADER: \captionsetup{font=small, labelfont=bf}
+
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
+
+
+Don't feel pressured to spend much. I'm happy with literally any of these.
+
+#+begin_export latex
+\newpage
+#+end_export
+* Books
+
+/The Priory of the Orange Tree/ by Samantha Shannon
+
+/The Count of Monte Cristo/  by Alexandre Dumas and Auguste Maquet. Unabridged translation by Robin Buss (should be around 1,200+ pages).
+
+/East of Eden/ by John Steinback
+
+/Goodnight, PunPun/ Volume 2 by Inio Asano
+
+/One Hundred Years of Solitude/ by Gabriel Garcia Marquez
+
+/A Dictionary of Color Combinations/ by Sanzo Wada. Vol 2 > Vol 1 but Vol 1 is still fine.
+
+/The Fellowship of the Ring/ by J. R. R. Tolkein
+
+#+begin_export latex
+\newpage
+#+end_export
+
+* Stationery
+
+** Kokuyo Saxa Poche
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/saxa-poche.png]]
+
+I found some in *National Bookstore* for *399*. They're a slim and compact pair of scissors that also doubles as a cutter. It's stick-like form factor means it can be stored just like a pen.
+
+Alternative: *Sun-Star Stickyle TSUMAMUNO*. This is also a compact pair of scissors in a pen-like form factor. But instead of doubling as a cutter, it can be used as a pair of tweezers. Tweezers are surprisingly useful. But I can't find the Stickyle anywhere.
+
+
+** Kokuyo Campus 8 Hole Punch Portable
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/hole-punch.png]]
+
+This is a hole puncher. It punches holes in paper. Unlike other punchers that are shaped like staplers, this one can lay flat. This makes it easier to store in my pencil case. I have to print a lot of graphs and tables for school, it's such a pain to manage all of them. So, I'll just punch holes in each paper and put them into a binder.
+
+I've seen it prices *~300* in *Lazada* 
+
+
+#+begin_export latex
+\newpage
+#+end_export
+* Fountain Pen Inks
+
+Get me ink that comes in bottles or flasks, not those in small cartridges. I like the bottles. The cartridges may have proprietary designs, meaning they only fit in specific fountain pens from the same brand. But bottled ink can be used in any pen.
+
+If the bottle advertises 'shading', that's good. I like ink that shifts colors.  Avoid inks that advertises 'shimmer', that's literally glitter. I normally don't like glittery inks. If it says 'sheen', that's okay. I don't really feel strongly about it.
+
+For reference, ~2 mL is enough ink for a month so 30mL would definitely last a full year.
+
+All of these inks can be bought online from their official websites or in Lazada & Shopee. You can find popular inks in large *Fully Booked* stores like in High Street or Mitsukoshi. Or in specialty stores like *Scribe* in SM Aura. You can also check *National Bookstore* but I'm pretty sure they don't have any of the premium inks.
+
+** Specific Inks
+
+This is just a reference guide to give you an idea of what to expect, to check if you're getting scammed, or if you're getting a bad price. I'm just putting information about the  inks you'll likely find here so you don't confuse them and can tell the differences.
+
+*You can pick any color, I don't mind*. Just pick what you think looks nice; you could get plain black or something more flamboyant. Just don't get me inks that are all the same color .
+
+The inks are listed in *descending order* of which I'd prefer.
+
+*** Pilot Iroshizuku
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/iroshizuku.jpg]]
+
+Pilot's premium line of fountain pen ink. It has a core collection of 24 colors. I think they have the best looking bottles.They look like they're for perfume.
+
+It comes in 50mL bottles, 15mL mini bottles, and 3mL cartridges. But the 15mL bottles don't really look very impressive. If you can, go for the 50mL bottle.
+
+The ink itself is also very nice. I haven't seen any inks in an ugly color. They're also water-based so they write smoothly and don't clog fountain pens.
+
+Estimated prices: ~1,100 PHP for the 50mL bottles. 
+
+Suggested colors: *Tsuki-yo* or *Fuyu-syogun* or *Syo-ro* or *Sui-gyoku*. Like I said, they really don't have any bad colors.
+
+
+*** Sailor Shikiori                                                                                                              
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/shikiori.png]]
+
+A premium, Japanese ink line themed around the four seasons. There's something like 32 different colors; that's 8 colors per season. You can choose any color for me.
+
+This line of ink generally comes in 10mL and 20mL glass bottles. 50mL used to be sold in round bottles but have been discontinued since 2019 I think. I'd prefer anything above 10mL. I don't think just 10mL is worth it.
+
+Estimated price for a standard 20mL bottle: ~600 PHP to ~700 PHP. Those are pretty poor volume-to-price ratios. I'd only recommend buying them if they're on sale.
+
+Suggested colors: *Shimoyo* or *Tamatebako* or *Fujisugata* or *Kasasagi*. But you can pick any according to availability. 
+
+
+*** Sailor Ink Studio                                                                                                        
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/ink_studio.png]]
+
+Technically, Sailor's most premium ink line. It is pretty niche and experimental. There's around 50 colors but the number changes a lot since colors are constantly getting added and discontinued.
+
+Unlike other Sailor inks, each color is designated by three digits.
+
+The first digit scales from 0 to 9 with 0 being extremely light, pastel shades to 9 being deep, almost black tones.
+
+The second digit indicates color family: 2 is for Gray/Black, 3 is for red/pink, 4 is for the Blues, 5 is for purples, 6 is for greens, 7s and 8s are for  yellows, oranges, and browns.
+
+The third digit is for specific undertones.
+
+So #123 is like a very light gray that has purple undertones.
+
+They come only in 20mL glass bottles but those costs around ~1,000 PHP. Not very cost-effective. I'd only recommend purchasing them if you they're on sale.
+
+I heard you can find standard colors for 675 in Scribe in SM Aura? But when I go, they're usually out of stock.
+
+Go with colors *#123*, *#224*, or *#162*. In that order of preference. 
+
+
+*** Lamy
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/lamy.png]]
+
+Lamy ink comes mainly in four different volumes: individual cartridges (labeled T10), plastic 30mL plastic bottles (T51), large 50mL glass bottles (T51), and high-end 30mL crystal bottles (T53).
+
+The standard colors come in Blue (which is erasable with water), Black, Blue-Black, Red, Green, Turquoise, and Violet.
+
+T51 bottles will likely cost ~500 PHP to ~600 PHP.
+
+T52 bottles are sold officially on Lazada for 669 PHP. Prices are also 669 on their official Lamy website.
+
+T53 bottles are sold I think for ~1,000 PHP.
+
+The T52 bottles come in a few standard colors that are noted online to be muted and matte: *Turquoise* > *Petrol* > *Blue-Black* > *Dark Lilac* > *Black* > all the other colors.
+
+While the T53 line have really saturated, intense dyed colors. The are themed after gemstones: *Amazonite* > *Agate* > *Obsidian* > *Benitoite* > all the others.
+
+
+*** Sailor Manyo                                                                                                              
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/manyo.jpeg]]
+
+A less premium line of ink from Sailor.It is themed around traditional Japanese poems. It has 35 main colors.
+
+It comes in 50mL square glass bottles, 3mL ink samples, and 20mL bottles. But officially, the 20mL bottles comes in gift sets of 4 (totaling 80mL).
+
+Estimated price range: +1,120 PHP for individual 50mL bottles (for standard colors) while +2,400 PHP for the 4-bottle sets (~600 per bottle).
+
+I imagine you can find lone 20mL bottles from resellers.
+
+Suggested colors: *Haha* or *Nekoyanagi* or *Kikyou* .
+
+
+*** Platinum
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/platinum.png]]
+
+A top Japanese brand that offer different types of fountain pen inks.
+
+There are _Standard Dye_ inks for everyday use. They come in cartridge packs that range from 130 PHP to 300 PHP while the 60mL bottles range from 750 PHP to 1,400 PHP depending on color and if they are limited editions.
+
+There are _Pigmented Inks_. They are for archival uses and water-resistant. That means they're more prone to clogging pens but aren't affected by highlighters. They also come in cartridges or 60mL glass bottles. The glass bottles usually retail above 1,400 PHP.
+
+There are the _Classic Inks (Iron-Gall)_. They are interesting because the inks oxidizes and darkens as they dry. The 60mL ink retail at 1,400 to around 1,500.
+
+There are the _Mixable (Mix-Free)_ Inks that are special because they can be mixed with each other safely, without causing unintended chemical reactions or clogging to create new colors. They costs similarly to the higher-end Standard inks, so around 1,400 PHP per 60mL.
+
+Lastly, there is the _Chou Kuro Black_. This is the most premium ink line Platinum offers. It is called the "blackest of the black" inks. It's double the price of Standard Ink: 2,800 PHP.
+
+If you choose to get me a Platinum ink, avoid the Mixable line because their whole point is to be mixed with another color but that would need at least two bottles (2 x 1,400 = 2,800). That's way too expensive.
+
+I'd like to try *Pigmented Ink Carbon Black* if you can find any. *Classic Sepia Black* too would be interesting.
+
+
+*** Diamine
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/diamine.png]]
+
+A British brand with over a hundred colors. There are lines of ink like Forever Ink or Inkvent, but don't mind them. The Standard Inks 
+
+A 30mL plastic bottle costs around 320 PHP.  Large 80mL glass bottles costs around 550 PHP to 750 PHP. The prices are just all over the place.
+
+There are 75mL glass bottles for special anniversary inks (you can safely ignore these). There are also 50mL bottles for more specialized inks like the Forever Ink (you can also ignore these). 
+
+Popular colors like Writer's Blood or Oxblood are usually out of stock.
+
+Suggested colors: *Onyx Black* > *Writer's Blood* > *Oxford Blue* > *Ancient Copper*
+
+
+*** Vinta                                                                                                                               
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/vinta.png]]
+
+A local, artisanal ink. Each color is themed around a major event in Filipino history. There's a ton of color but they're all shimmer heavy. I'm kind of interested. If you do get an ink, try aiming for subtler colors.
+
+I think they only sell inks online, they don't sell in physical stores except through resellers.
+
+Their 30mL bottles are like 449 to ~600 PHP. 449 for the standard, shading inks while 599 for the shimmer-focused inks.
+
+*Sandugo* looks pretty nice.
+
+
+*** Asvine/Hongdian
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/asvine-hongdian.jpg]]
+
+Both are Chinese brands owned by the same company. They are chemically similar and are very comparable with Jinhao inks, but are less messy.
+
+Prices are slightly higher:
+
+They are available in 60mL and 70mL bottles, depending on which brand. I found one in Lazada for around 400 PHP to under 500 PHP.
+
+There are also 18mL bottles, I heard. But I can't find prices of them online.
+
+As for colors, I guess *Peacock Blue* looks nice. It's up to you really.
+
+
+*** Jinhao
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/jinhao.jpg]]
+
+Jinhao is an entry-level, Chinese brand. The 30mL bottles should have a lot of colors to pick from. The larger 50mL bottles only have four main colors from what I know: Blue-Black > Black > Blue = Red. 
+
+There are compact 30mL glass bottles sold in Lazada for ~250 PHP.
+
+There are also large 50mL glass bottles for under ~300 PHP.
+
+I heard this is a sleeper pick, surprisingly decent for it's price point.
+
+        
+*** Pilot Standard                                                                                                             
+#+attr_latex: :float nil :placement [H]
+[[/home/tyrone/Downloads/inks/pilot.png]]
+
+I already have these. They come in three main colors: Blue, Black, Blue-Black. I think there's red.
+
+There's another line of Pilot inks called *Pilot Namiki*, they are the same chemically with Pilot Standard. So don't fall for listings saying Namiki is a premium ink.
+
+Pilot Standard isn't labeled Pilot Standard. They're just called Pilot [color] like Pilot Blue or Pilot Black.
+
+A 30mL bottle comes in at ~200 PHP. It's what I normally buy. It is because of that, that I designate Pilot Standard as the baseline of fountain pen inks.
+
+I prefer Blue-Black > Black > Blue >>> Red.
+
+
+
